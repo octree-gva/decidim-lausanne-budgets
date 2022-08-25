@@ -3,7 +3,7 @@
 class CreateOrders < ActiveRecord::Migration[5.0]
   def change
     create_table :decidim_lausanne_budgets_orders do |t|
-      #t.references :decidim_user, index: true
+      # t.references :decidim_user, index: true
       t.references :decidim_lausanne_personal_record, index: true
       t.references :decidim_component, index: true
       t.datetime :checked_out_at
