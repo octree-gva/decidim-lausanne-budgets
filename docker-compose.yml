@@ -1,0 +1,15 @@
+services:
+  local_postgres:
+    image: postgres:12
+    volumes:
+      - pg-data-test:/var/lib/postgresql/data
+    environment:
+      # trunk-ignore(gitleaks/generic-api-key)
+      - POSTGRES_PASSWORD=TEST-insecure-password
+      - POSTGRES_USER=decidim
+      - POSTGRES_DB=decidim_test
+    ports:
+      - 5432:5432
+
+volumes:
+  pg-data-test: {}

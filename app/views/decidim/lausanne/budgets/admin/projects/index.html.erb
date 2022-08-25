@@ -1,0 +1,82 @@
+<div class="card with-overflow">
+  <div class="card-divider">
+    <h2 class="card-title flex--sbc">
+      <div>
+        <%= link_to translated_attribute(budget.title), budgets_path %> &gt;
+        <%= t(".title") %>
+      </div>
+      <div class="flex--cc flex-gap--1">
+        <%= link_to t("actions.import", scope: "decidim.lausanne.budgets", name: t("models.project.name", scope: "decidim.lausanne.budgets.admin")), new_budget_proposals_import_path(budget), class: "button tiny button--title" if allowed_to? :import_proposals, :project %>
+        <% if allowed_to? :export, :budget %>
+          <%= export_dropdown(current_component, budget.id) %>
+        <% end %>
+        <%= link_to t("actions.new", scope: "decidim.lausanne.budgets", name: t("models.project.name", scope: "decidim.lausanne.budgets.admin")), new_budget_project_path, class: "button tiny button--title new" if allowed_to? :create, :project %>
+      </div>
+    </h2>
+  </div>
+
+  <div class="card-section">
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+          <tr>
+            <th><%= t("models.project.fields.title", scope: "decidim.lausanne.budgets") %></th>
+            <th><%= t("index.confirmed_orders_count") %></th>
+            <th><%= t(".selected") %></th>
+            <%= th_resource_scope_label %>
+            <th class="actions"><%= t("actions.title", scope: "decidim.lausanne.budgets") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% projects.each do |project| %>
+            <tr data-id="<%= project.id %>">
+              <td>
+                <%= translated_attribute(project.title) %><br>
+              </td>
+              <td>
+               <%= project.confirmed_orders_count %>
+              </td>
+              <td>
+                <% if project.selected? %>
+                  <%= content_tag :strong, t(".selected"), class: "text-success" %>
+                <% else %>
+                  <%= content_tag :span, "×", class: "text-muted" %>
+                <% end %>
+              </td>
+              <%= td_resource_scope_for(project.scope) %>
+              <td class="table-list__actions">
+                <%= icon_link_to "eye", resource_locator([budget, project]).path, t("actions.preview", scope: "decidim.lausanne.budgets"), target: :blank, class: "action-icon--preview" %>
+
+                <% if allowed_to? :update, :project, project: project %>
+                  <%= icon_link_to "pencil", resource_locator([budget, project]).edit, t("actions.edit", scope: "decidim.lausanne.budgets"), class: "action-icon--edit" %>
+                <% end %>
+
+                <% if allowed_to? :update, :project, project: project %>
+                    <%= icon_link_to "folder", project_attachment_collections_path(project), t("actions.attachment_collections", scope: "decidim.lausanne.budgets"), class: "action-icon--attachment_collections" %>
+                <% end %>
+
+                <% if allowed_to? :update, :project, project: project %>
+                  <%= icon_link_to "paperclip", project_attachments_path(project), t("actions.attachments", scope: "decidim.lausanne.budgets"), class: "action-icon--attachments" %>
+                <% end %>
+
+                <%= resource_permissions_link(project) %>
+
+                <% if allowed_to? :destroy, :project, project: project %>
+                  <%= icon_link_to "circle-x", resource_locator([budget, project]).show, t("actions.destroy", scope: "decidim.lausanne.budgets"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.lausanne.budgets") } %>
+                <% else %>
+                  <%= icon "circle-x", class: "action-icon action-icon--disabled", role: "img" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate projects, theme: "decidim" %>
+    </div>
+  </div>
+  <div class="card-divider">
+    <strong><%= t ".finished_orders" %>:&nbsp;</strong><span><%= finished_orders.count %></span>
+    <span>&nbsp;|&nbsp;</span>
+    <strong><%= t ".pending_orders" %>:&nbsp;</strong><span><%= pending_orders.count %></span>
+  </div>
+</div>
