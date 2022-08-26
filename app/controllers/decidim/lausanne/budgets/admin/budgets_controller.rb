@@ -20,12 +20,12 @@ module Decidim
 
             CreateBudget.call(@form) do
               on(:ok) do
-                flash[:notice] = I18n.t("budgets.create.success", scope:decidim.lausanne.budgetsts.admin")
+                flash[:notice] = I18n.t("budgets.create.success", scope:"decidim.lausanne.budgetsts.admin")
                 redirect_to budgets_path
               end
 
               on(:invalid) do
-                flash.now[:alert] = I18n.t("budgets.create.invalid", scope:decidim.lausanne.budgetsts.admin")
+                flash.now[:alert] = I18n.t("budgets.create.invalid", scope:"decidim.lausanne.budgetsts.admin")
                 render action: "new"
               end
             end
@@ -42,12 +42,12 @@ module Decidim
 
             UpdateBudget.call(@form, budget) do
               on(:ok) do
-                flash[:notice] = I18n.t("budgets.update.success", scope:decidim.lausanne.budgetsts.admin")
+                flash[:notice] = I18n.t("budgets.update.success", scope:"decidim.lausanne.budgetsts.admin")
                 redirect_to budgets_path
               end
 
               on(:invalid) do
-                flash.now[:alert] = I18n.t("budgets.update.invalid", scope:decidim.lausanne.budgetsts.admin")
+                flash.now[:alert] = I18n.t("budgets.update.invalid", scope:"decidim.lausanne.budgetsts.admin")
                 render action: "edit"
               end
             end
@@ -58,11 +58,11 @@ module Decidim
 
             DestroyBudget.call(budget, current_user) do
               on(:ok) do
-                flash[:notice] = I18n.t("budgets.destroy.success", scope:decidim.lausanne.budgetsts.admin")
+                flash[:notice] = I18n.t("budgets.destroy.success", scope:"decidim.lausanne.budgetsts.admin")
               end
 
               on(:invalid) do
-                flash.now[:alert] = I18n.t("budgets.destroy.invalid", scope:decidim.lausanne.budgetsts.admin")
+                flash.now[:alert] = I18n.t("budgets.destroy.invalid", scope:"decidim.lausanne.budgetsts.admin")
               end
             end
 

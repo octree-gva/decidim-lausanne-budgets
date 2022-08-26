@@ -37,7 +37,7 @@ task :prepare_tests do
   config_file = File.expand_path("spec/dummy/config/database.yml", __dir__)
   File.open(config_file, "w") { |f| YAML.dump(databaseYml, f) }
   Dir.chdir("spec/dummy") do
-     system("bundle exec rails decidim_lausanne_budgets:install:migrations ")
+     system("bundle exec rails decidim_lausanne_budgets:install:migrations")
      system("bundle exec rails db:migrate")
    end
 end

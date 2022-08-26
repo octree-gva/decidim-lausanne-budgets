@@ -14,8 +14,8 @@ module Decidim
 
         component_manifest_name "lausanne_budgets"
 
-        has_many :projects, foreign_key: "decidim_lausanne_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Project", inverse_of: :budget, dependent: :destroy
-        has_many :orders, foreign_key: "decidim_lausanne_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Order", inverse_of: :budget, dependent: :destroy
+        has_many :projects, foreign_key: "loz_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Project", inverse_of: :budget, dependent: :destroy
+        has_many :orders, foreign_key: "loz_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Order", inverse_of: :budget, dependent: :destroy
 
         delegate :participatory_space, :manifest, :settings, to: :component
 

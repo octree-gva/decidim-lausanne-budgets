@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class VotesEnabledToVotesChoices < ActiveRecord::Migration[5.2]
+class LausanneVotesEnabledToVotesChoices < ActiveRecord::Migration[5.2]
   class Component < ApplicationRecord
     self.table_name = :decidim_components
   end

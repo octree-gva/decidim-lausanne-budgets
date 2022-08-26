@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateProjects < ActiveRecord::Migration[5.0]
+class CreateLausanneProjects < ActiveRecord::Migration[5.0]
   def change
-    create_table :decidim_lausanne_budgets_projects do |t|
+    create_table :loz_budgets_projects do |t|
       t.jsonb :title
       t.jsonb :description
       t.bigint :budget_amount, null: false

@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-class MoveBudgetsToOwnModel < ActiveRecord::Migration[5.2]
+class MoveLausanneBudgetsToOwnModel < ActiveRecord::Migration[5.2]
   class Component < ApplicationRecord
     self.table_name = :decidim_components
   end
 
   class Budget < ApplicationRecord
-    self.table_name = :decidim_lausanne_budgets_budgets
+    self.table_name = :loz_budgets_budgets
   end
 
   class Project < ApplicationRecord
-    self.table_name = :decidim_lausanne_budgets_projects
+    self.table_name = :loz_budgets_projects
   end
 
   class Order < ApplicationRecord
@@ -28,12 +28,12 @@ class MoveBudgetsToOwnModel < ActiveRecord::Migration[5.2]
       add_budget_reference_to_orders(resource)
     end
 
-    remove_column :decidim_lausanne_budgets_projects, :decidim_component_id
+    remove_column :loz_budgets_projects, :decidim_component_id
     remove_column :decidim_lausanne_budgets_orders, :decidim_component_id
   end
 
   def down
-    add_column :decidim_lausanne_budgets_projects, :decidim_component_id, :integer, index: true
+    add_column :loz_budgets_projects, :decidim_component_id, :integer, index: true
     add_column :decidim_lausanne_budgets_orders, :decidim_component_id, :integer, index: true
 
     Budget.find_each do |resource|

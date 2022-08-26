@@ -9,13 +9,14 @@ module Decidim
         include Decidim::DataPortability
         include Decidim::NewsletterParticipant
 
-        belongs_to :user, class_name: "Decidim::User", foreign_key: "decidim_user_id"
-        belongs_to :budget, foreign_key: "decidim_lausanne_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Budget", inverse_of: :orders
+        belongs_to :user_record, class_name: "Decidim::Lausanne::Budgets::UserRecord", foreign_key: "loz_user_record_id"
+        has_one :user, through: :user_record, class_name: "Decidim::User", foreign_key: "decidim_user_id"
+        belongs_to :budget, foreign_key: "loz_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Budget", inverse_of: :orders
         has_one :component, through: :budget, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
         has_many :line_items, class_name: "Decidim::Lausanne::Budgets::LineItem", foreign_key: "decidim_order_id", dependent: :destroy
         has_many :projects, through: :line_items, class_name: "Decidim::Lausanne::Budgets::Project", foreign_key: "decidim_project_id"
 
-        validates :user, uniqueness: { scope: :budget }
+        validates :user_record, uniqueness: { scope: :budget }, if: :anonymous?
         validates :budget, presence: true
         validate :user_belongs_to_organization
 
@@ -60,7 +61,9 @@ module Decidim
 
           maximum_budget
         end
-
+        def anonymous?
+          !user
+        end
         # Public: Returns the numeric amount the given project should allocate
         # from the total available allocation when it is added to the order. The
         # allocation is normally the project's budget but for project selection

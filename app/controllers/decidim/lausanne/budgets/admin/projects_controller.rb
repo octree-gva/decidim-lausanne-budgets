@@ -25,12 +25,12 @@ module Decidim
 
             CreateProject.call(@form) do
               on(:ok) do
-                flash[:notice] = I18n.t("projects.create.success", scope:decidim.lausanne.budgetsts.admin")
+                flash[:notice] = I18n.t("projects.create.success", scope:"decidim.lausanne.budgetsts.admin")
                 redirect_to budget_projects_path(budget)
               end
 
               on(:invalid) do
-                flash.now[:alert] = I18n.t("projects.create.invalid", scope:decidim.lausanne.budgetsts.admin")
+                flash.now[:alert] = I18n.t("projects.create.invalid", scope:"decidim.lausanne.budgetsts.admin")
                 render action: "new"
               end
             end
@@ -48,12 +48,12 @@ module Decidim
 
             UpdateProject.call(@form, project) do
               on(:ok) do
-                flash[:notice] = I18n.t("projects.update.success", scope:decidim.lausanne.budgetsts.admin")
+                flash[:notice] = I18n.t("projects.update.success", scope:"decidim.lausanne.budgetsts.admin")
                 redirect_to budget_projects_path(budget)
               end
 
               on(:invalid) do
-                flash.now[:alert] = I18n.t("projects.update.invalid", scope:decidim.lausanne.budgetsts.admin")
+                flash.now[:alert] = I18n.t("projects.update.invalid", scope:"decidim.lausanne.budgetsts.admin")
                 render action: "edit"
               end
             end
@@ -64,7 +64,7 @@ module Decidim
 
             DestroyProject.call(project, current_user) do
               on(:ok) do
-                flash[:notice] = I18n.t("projects.destroy.success", scope:decidim.lausanne.budgetsts.admin")
+                flash[:notice] = I18n.t("projects.destroy.success", scope: "decidim.lausanne.budgetsts.admin")
                 redirect_to budget_projects_path(budget)
               end
             end

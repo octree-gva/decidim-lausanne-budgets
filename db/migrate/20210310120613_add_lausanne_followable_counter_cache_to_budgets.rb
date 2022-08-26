@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddFollowableCounterCacheToBudgets < ActiveRecord::Migration[5.2]
+class AddLausanneFollowableCounterCacheToBudgets < ActiveRecord::Migration[5.2]
   def change
-    add_column :decidim_lausanne_budgets_projects, :follows_count, :integer, null: false, default: 0, index: true
+    add_column :loz_budgets_projects, :follows_count, :integer, null: false, default: 0, index: true
 
     reversible do |dir|
       dir.up do

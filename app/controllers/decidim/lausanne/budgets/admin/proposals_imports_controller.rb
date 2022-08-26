@@ -19,12 +19,12 @@ module Decidim
             @form = form(Admin::ProjectImportProposalsForm).from_params(params, budget: budget)
             Admin::ImportProposalsToBudgets.call(@form) do
               on(:ok) do |projects|
-                flash[:notice] = I18n.t("proposals_imports.create.success", scope:decidim.lausanne.budgetsts.admin", number: projects.length)
+                flash[:notice] = I18n.t("proposals_imports.create.success", scope:"decidim.lausanne.budgetsts.admin", number: projects.length)
                 redirect_to budget_projects_path(budget)
               end
 
               on(:invalid) do
-                flash[:alert] = I18n.t("proposals_imports.create.invalid", scope:decidim.lausanne.budgetsts.admin")
+                flash[:alert] = I18n.t("proposals_imports.create.invalid", scope:"decidim.lausanne.budgetsts.admin")
                 render action: "new"
               end
             end

@@ -1,3 +1,12 @@
+PATH
+  remote: .
+  specs:
+    decidim-lausanne-budgets (0.24.3)
+      decidim-comments (= 0.24.3)
+      decidim-core (= 0.24.3)
+      kaminari (~> 1.2, >= 1.2.1)
+      searchlight (~> 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -72,6 +81,7 @@ GEM
       html_tokenizer (~> 0.0.6)
       parser (>= 2.4)
       smart_properties
+    bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
     browser (2.7.1)
@@ -393,6 +403,8 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.3.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
@@ -479,6 +491,17 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
+    letter_opener_web (1.4.1)
+      actionmailer (>= 3.2)
+      letter_opener (~> 1.0)
+      railties (>= 3.2)
+    listen (3.7.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.3.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -498,6 +521,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.16.2)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.27)
@@ -511,7 +535,8 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.8)
     nobspw (0.6.2)
-    nokogiri (1.13.6-x86_64-darwin)
+    nokogiri (1.13.6)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth (0.5.10)
     oauth2 (1.4.10)
@@ -724,6 +749,10 @@ GEM
       coffee-rails
     spreadsheet (1.3.0)
       ruby-ole
+    spring (2.1.1)
+    spring-watcher-listen (2.0.1)
+      listen (>= 2.7, < 4.0)
+      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -768,6 +797,11 @@ GEM
       equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.9)
       rack (>= 2.0.9)
+    web-console (3.7.0)
+      actionview (>= 5.0)
+      activemodel (>= 5.0)
+      bindex (>= 0.4.0)
+      railties (>= 5.0)
     webmock (3.14.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -788,17 +822,23 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (~> 1.4)
-  decidim-admin (= 0.24.3)
-  decidim-comments (= 0.24.3)
-  decidim-core (= 0.24.3)
+  byebug (~> 11.0)
+  decidim (= 0.24.3)
   decidim-dev (= 0.24.3)
-  decidim-proposals (= 0.24.3)
+  decidim-lausanne-budgets!
+  faker (~> 2.14)
   kaminari (~> 1.2, >= 1.2.1)
+  letter_opener_web (~> 1.3)
+  listen (~> 3.1)
   puma (>= 4.3)
   rails
   rake (= 13.0.6)
+  rubocop
   searchlight (~> 4.1)
+  spring (~> 2.0)
+  spring-watcher-listen (~> 2.0)
   uglifier (~> 4.1)
+  web-console (~> 3.5)
 
 RUBY VERSION
    ruby 2.7.1p83

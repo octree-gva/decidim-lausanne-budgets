@@ -2,7 +2,7 @@
 
 require "decidim/components/namer"
 
-Decidim.register_component(:budgets) do |component|
+Decidim.register_component(:lausanne_budgets) do |component|
   component.engine = Decidim::Lausanne::Budgets::Engine
   component.admin_engine = Decidim::Lausanne::Budgets::AdminEngine
   component.icon = "decidim/lausanne/budgets/icon.svg"
