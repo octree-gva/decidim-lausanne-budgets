@@ -267,53 +267,53 @@ fr:
           show:
             budget: Budget
             view_all_projects: Voir tous les projets
-      components:
-        lausanne_budgets:
-          actions:
-            vote: Voter
-          name: Public Budgets
-          settings:
-            global:
-              announcement: Annonce
-              comments_enabled: Activer le module de commentaire
-              comments_max_length: Longueur max des commentaires (laisser 0 pour la valeur par défaut)
-              form:
-                errors:
-                  budget_voting_rule_only_one: Une seule règle de vote doit être activée
-                  budget_voting_rule_required: Une règle de vote est requise
-              landing_page_content: Page d'accueil des budgets
-              more_information_modal: Plus d’informations
-              projects_per_page: Projets par page
-              resources_permissions_enabled: Les autorisations d'actions peuvent être définies pour chaque projet
-              scope_id: Secteur
-              scopes_enabled: Secteurs activés
-              title: Titre
-              total_budget: Budget total
-              vote_minimum_budget_projects_number: Nombre minimum de projets à voter
-              vote_rule_minimum_budget_projects_enabled: "Activer la règle : Nombre minimum de projets à voter"
-              vote_rule_selected_projects_enabled: "Activer la règle : Nombre minimum et maximum de projets à voter"
-              vote_rule_threshold_percent_enabled: "Activer la règle : Pourcentage de budget minimum"
-              vote_selected_projects_maximum: Nombre maximum de projets à sélectionner
-              vote_selected_projects_minimum: Nombre minimum de projets à sélectionner
-              vote_threshold_percent: Pourcentage du budget à atteindre pour voter
-              workflow: Processus
-              workflow_choices:
-                all: "Voter sur tous les budgets : autorise les participants à voter sur tous les budgets."
-                one: "Voter sur un seul budget : autorise les participants à voter sur un seul budget parmi les budgets proposés."
-            step:
-              announcement: Annonce
-              comments_blocked: Commentaires bloqués
-              highlighted_heading: En-tête en surbrillance
-              landing_page_content: Page d'accueil des budgets
-              list_heading: En-tête de la liste des budgets
-              more_information_modal: Plus d’informations
-              show_votes: Afficher les votes
-              title: Titre
-              votes: Vote
-              votes_choices:
-                disabled: Vote désactivé
-                enabled: Votes activés
-                finished: Vote terminé
+    components:
+      lausanne_budgets:
+        actions:
+          vote: Voter
+        name: Public Budgets
+        settings:
+          global:
+            announcement: Annonce
+            comments_enabled: Activer le module de commentaire
+            comments_max_length: Longueur max des commentaires (laisser 0 pour la valeur par défaut)
+            form:
+              errors:
+                budget_voting_rule_only_one: Une seule règle de vote doit être activée
+                budget_voting_rule_required: Une règle de vote est requise
+            landing_page_content: Page d'accueil des budgets
+            more_information_modal: Plus d’informations
+            projects_per_page: Projets par page
+            resources_permissions_enabled: Les autorisations d'actions peuvent être définies pour chaque projet
+            scope_id: Secteur
+            scopes_enabled: Secteurs activés
+            title: Titre
+            total_budget: Budget total
+            vote_minimum_budget_projects_number: Nombre minimum de projets à voter
+            vote_rule_minimum_budget_projects_enabled: "Activer la règle : Nombre minimum de projets à voter"
+            vote_rule_selected_projects_enabled: "Activer la règle : Nombre minimum et maximum de projets à voter"
+            vote_rule_threshold_percent_enabled: "Activer la règle : Pourcentage de budget minimum"
+            vote_selected_projects_maximum: Nombre maximum de projets à sélectionner
+            vote_selected_projects_minimum: Nombre minimum de projets à sélectionner
+            vote_threshold_percent: Pourcentage du budget à atteindre pour voter
+            workflow: Processus
+            workflow_choices:
+              all: "Voter sur tous les budgets : autorise les participants à voter sur tous les budgets."
+              one: "Voter sur un seul budget : autorise les participants à voter sur un seul budget parmi les budgets proposés."
+          step:
+            announcement: Annonce
+            comments_blocked: Commentaires bloqués
+            highlighted_heading: En-tête en surbrillance
+            landing_page_content: Page d'accueil des budgets
+            list_heading: En-tête de la liste des budgets
+            more_information_modal: Plus d’informations
+            show_votes: Afficher les votes
+            title: Titre
+            votes: Vote
+            votes_choices:
+              disabled: Vote désactivé
+              enabled: Votes activés
+              finished: Vote terminé
     events:
       budgets:
         budget_published:
