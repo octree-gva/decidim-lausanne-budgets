@@ -4,7 +4,7 @@ module Decidim
   module Lausanne
     module Budgets
       # This cell renders the Medium (:m) budget card
-      # for an given instance of a Decidim::Lausanne::Budgets::Budget
+      # for an given instance of a Decidim::Lausanne::Budgets::LausanneBudget
       class BudgetMCell < Decidim::CardMCell
         include ActiveSupport::NumberHelper
         include Decidim::Lausanne::Budgets::ProjectsHelper

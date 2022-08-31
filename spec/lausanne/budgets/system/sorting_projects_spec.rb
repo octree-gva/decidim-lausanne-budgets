@@ -97,6 +97,6 @@ describe "Sorting projects", type: :system do
   end
 
   def visit_budget
-    page.visit Decidim::EngineRouter.main_proxy(component).budget_projects_path(budget)
+    page.visit Decidim::EngineRouter.main_proxy(component).lausanne_budget_projects_path(budget)
   end
 end

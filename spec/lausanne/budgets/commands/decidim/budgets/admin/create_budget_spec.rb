@@ -27,10 +27,10 @@ describe Decidim::Lausanne::Budgets::Admin::CreateBudget do
 
   let(:invalid) { false }
 
-  let(:budget) { Decidim::Lausanne::Budgets::Budget.last }
+  let(:budget) { Decidim::Lausanne::Budgets::LausanneBudget.last }
 
   it "creates the budget" do
-    expect { subject.call }.to change { Decidim::Lausanne::Budgets::Budget.count }.by(1)
+    expect { subject.call }.to change { Decidim::Lausanne::Budgets::LausanneBudget.count }.by(1)
   end
 
   it "stores the given data" do
@@ -51,7 +51,7 @@ describe Decidim::Lausanne::Budgets::Admin::CreateBudget do
     expect(Decidim.traceability)
       .to receive(:create!)
       .with(
-        Decidim::Lausanne::Budgets::Budget,
+        Decidim::Lausanne::Budgets::LausanneBudget,
         user,
         hash_including(:title, :description, :component, :weight, :total_budget),
         visibility: "all"

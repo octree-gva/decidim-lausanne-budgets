@@ -11,7 +11,7 @@ module Decidim
           include Decidim::Admin::Concerns::HasAttachments
 
           def after_destroy_path
-            budget_projects_path(project.budget)
+            lausanne_budget_projects_path(project.budget)
           end
 
           def attached_to

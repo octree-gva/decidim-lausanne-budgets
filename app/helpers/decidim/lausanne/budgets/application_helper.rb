@@ -13,10 +13,10 @@ module Decidim
 
         def filter_status_values
           TreeNode.new(
-            TreePoint.new("", t("decidim.lausanne.budgets.projects.filters.status_values.all")),
+            TreePoint.new("", t("decidim.lausanne_budgets.projects.filters.status_values.all")),
             [
-              TreePoint.new("selected", t("decidim.lausanne.budgets.projects.filters.status_values.selected")),
-              TreePoint.new("not_selected", t("decidim.lausanne.budgets.projects.filters.status_values.not_selected"))
+              TreePoint.new("selected", t("decidim.lausanne_budgets.projects.filters.status_values.selected")),
+              TreePoint.new("not_selected", t("decidim.lausanne_budgets.projects.filters.status_values.not_selected"))
             ]
           )
         end

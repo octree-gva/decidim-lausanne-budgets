@@ -12,14 +12,14 @@ module Decidim
           end
 
           def calculate
-            budgets = Decidim::Lausanne::Budgets::Budget.where(component: @resource)
+            budgets = Decidim::Lausanne::Budgets::LausanneBudget.where(component: @resource)
             orders = Decidim::Lausanne::Budgets::Order.where(budget: budgets)
                                             .finished
                                             .where("decidim_lausanne_budgets_orders.checked_out_at <= ?", end_time)
 
             {
-              cumulative_users: orders.pluck(:decidim_user_id),
-              quantity_users: orders.where("decidim_lausanne_budgets_orders.checked_out_at >= ?", start_time).pluck(:decidim_user_id)
+              cumulative_users: orders.pluck(:loz_user_record_id),
+              quantity_users: orders.where("decidim_lausanne_budgets_orders.checked_out_at >= ?", start_time).pluck(:loz_user_record_id)
             }
           end
         end

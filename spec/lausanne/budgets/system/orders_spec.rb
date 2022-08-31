@@ -312,7 +312,7 @@ describe "Orders", type: :system do
       end
 
       it "is alerted when trying to leave the component before completing" do
-        budget_projects_path = Decidim::EngineRouter.main_proxy(component).budget_projects_path(budget)
+        lausanne_budget_projects_path = Decidim::EngineRouter.main_proxy(component).lausanne_budget_projects_path(budget)
 
         visit_budget
 
@@ -325,7 +325,7 @@ describe "Orders", type: :system do
           page.find(".logo-wrapper a").click
         end
 
-        expect(page).to have_current_path budget_projects_path
+        expect(page).to have_current_path lausanne_budget_projects_path
       end
 
       context "and try to vote a project that exceed the total budget" do
@@ -626,6 +626,6 @@ describe "Orders", type: :system do
   end
 
   def visit_budget
-    page.visit Decidim::EngineRouter.main_proxy(component).budget_projects_path(budget)
+    page.visit Decidim::EngineRouter.main_proxy(component).lausanne_budget_projects_path(budget)
   end
 end

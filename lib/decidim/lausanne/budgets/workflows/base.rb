@@ -117,14 +117,14 @@ module Decidim
           #
           # Returns an ActiveRecord::Relation.
           def budgets
-            @budgets ||= Decidim::Lausanne::Budgets::Budget.where(component: budgets_component).order(weight: :asc)
+            @budgets ||= Decidim::Lausanne::Budgets::LausanneBudget.where(component: budgets_component).order(weight: :asc)
           end
 
           protected
 
             def orders
-              @orders ||= Decidim::Lausanne::Budgets::Order.includes(:projects).where(decidim_user_id: user, decidim_budgets_budget_id: budgets).map do |order|
-                [order.decidim_budgets_budget_id, { order: order, status: order.checked_out? ? :voted : :progress }] if order.projects.any?
+              @orders ||= Decidim::Lausanne::Budgets::Order.includes(:projects).where(user: user, loz_budgets_budget_id: budgets).map do |order|
+                [order.loz_budgets_budget_id, { order: order, status: order.checked_out? ? :voted : :progress }] if order.projects.any?
               end.compact.to_h
             end
         end

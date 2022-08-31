@@ -29,8 +29,7 @@ module Decidim
         end
 
         def budget_confirm_disabled_attr
-          return if current_order_can_be_checked_out?
-
+          return if current_order_can_be_checked_out? && voting_open? && current_order.valid?
           %( disabled="disabled" ).html_safe
         end
 
@@ -42,43 +41,57 @@ module Decidim
           current_order&.can_checkout?
         end
 
-        def current_rule_explanation
+        def current_rule_explanation(scope="budget_summary")
           return unless current_order
-
+          i18n_scope = "decidim.lausanne.budgets.projects.#{scope}"
           if current_order.projects_rule?
-            if current_order.minimum_projects.positive? && current_order.minimum_projects < current_order.maximum_projects
+            if current_order.minimum_projects.positive? && current_order.minimum_projects.to_i < current_order.maximum_projects.to_i
               t(
-                ".projects_rule.instruction",
+                "#{i18n_scope}.projects_rule.instruction",
                 minimum_number: current_order.minimum_projects,
                 maximum_number: current_order.maximum_projects
               )
             else
-              t(".projects_rule_maximum_only.instruction", maximum_number: current_order.maximum_projects)
+              t(
+                "#{i18n_scope}.projects_rule_maximum_only.instruction",
+                maximum_number: current_order.maximum_projects,
+              )
             end
           elsif current_order.minimum_projects_rule?
-            t(".minimum_projects_rule.instruction", minimum_number: current_order.minimum_projects)
+            t(
+              "#{i18n_scope}.minimum_projects_rule.instruction",
+              minimum_number: current_order.minimum_projects.to_i,
+              count: current_order.minimum_projects - current_order.total_projects
+            )
           else
-            t(".vote_threshold_percent_rule.instruction", minimum_budget: budget_to_currency(current_order.minimum_budget))
+            t(
+              "#{i18n_scope}.vote_threshold_percent_rule.instruction",
+              minimum_budget: budget_to_currency(current_order.minimum_budget.to_i),
+            )
           end
         end
 
         def current_rule_description
           return unless current_order
-
           if current_order.projects_rule?
-            if current_order.minimum_projects.positive? && current_order.minimum_projects < current_order.maximum_projects
+            if current_order.minimum_projects.positive? && current_order.minimum_projects.to_i < current_order.maximum_projects.to_i
               t(
                 ".projects_rule.description",
                 minimum_number: current_order.minimum_projects,
-                maximum_number: current_order.maximum_projects
+                maximum_number: current_order.maximum_projects,                 
+                scope: "decidim.lausanne.budgets.projects.budget_summary"
               )
             else
-              t(".projects_rule_maximum_only.description", maximum_number: current_order.maximum_projects)
+              t(
+                ".projects_rule_maximum_only.description", 
+                maximum_number: current_order.maximum_projects.to_i,
+                scope: "decidim.lausanne.budgets.projects.budget_summary"
+            )
             end
           elsif current_order.minimum_projects_rule?
-            t(".minimum_projects_rule.description", minimum_number: current_order.minimum_projects)
+            t(".minimum_projects_rule.description", minimum_number: current_order.minimum_projects, count: current_order.minimum_projects - current_order.total_projects)
           else
-            t(".vote_threshold_percent_rule.description", minimum_budget: budget_to_currency(current_order.minimum_budget))
+            t(".vote_threshold_percent_rule.description", minimum_budget: budget_to_currency(current_order.minimum_budget.to_i))
           end
         end
       end

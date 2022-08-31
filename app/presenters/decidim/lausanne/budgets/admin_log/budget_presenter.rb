@@ -4,7 +4,7 @@ module Decidim
   module Lausanne
     module Budgets
       module AdminLog
-        # This class holds the logic to present a `Decidim::Lausanne::Budgets::Budget`
+        # This class holds the logic to present a `Decidim::Lausanne::Budgets::LausanneBudget`
         # for the `AdminLog` log.
         #
         # Usage should be automatic and you shouldn't need to call this class
@@ -19,8 +19,8 @@ module Decidim
             def action_string
               case action
               when "create", "delete", "update"
-                decidim.lausanne.budgetsgets.admin_log.budget.# {action}"
-                 else
+                "decidim.lausanne_budgets.admin_log.budget.#{action}"
+              else
                 super
               end
             end

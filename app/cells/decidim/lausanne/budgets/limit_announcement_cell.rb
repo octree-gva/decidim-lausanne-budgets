@@ -28,9 +28,9 @@ module Decidim
             if discardable.any?
               t(:limit_reached, scope: i18n_scope,
                                 links: budgets_link_list(discardable),
-                                landing_path: budgets_path)
+                                landing_path: lausanne_budgets_path)
             else
-              t(:cant_vote, scope: i18n_scope, landing_path: budgets_path)
+              t(:cant_vote, scope: i18n_scope, landing_path: lausanne_budgets_path)
             end
           end
 
@@ -39,7 +39,7 @@ module Decidim
           end
 
           def i18n_scope
-         decidim.lausanne.budgetsgets.limit_announcement"
+            "decidim.lausanne_budgets.limit_announcement"
           end
       end
     end

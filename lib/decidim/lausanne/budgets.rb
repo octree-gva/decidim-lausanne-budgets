@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "decidim/lausanne/budgets/current_user_record_middleware"
 require "decidim/lausanne/budgets/workflows"
 require "decidim/lausanne/budgets/admin"
 require "decidim/lausanne/budgets/api"

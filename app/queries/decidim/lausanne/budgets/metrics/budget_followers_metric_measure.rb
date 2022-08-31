@@ -12,15 +12,15 @@ module Decidim
           end
 
           def calculate
-            budgets = Decidim::Lausanne::Budgets::Budget.where(component: @resource)
+            budgets = Decidim::Lausanne::Budgets::LausanneBudget.where(component: @resource)
             projects = Decidim::Lausanne::Budgets::Project.where(budget: budgets)
 
             budgets_followers = Decidim::Follow.where(followable: projects).joins(:user)
                                                .where("decidim_follows.created_at <= ?", end_time)
-            cumulative_users = budgets_followers.pluck(:decidim_user_id)
+            cumulative_users = budgets_followers.pluck(:loz_user_record_id)
 
             budgets_followers = budgets_followers.where("decidim_follows.created_at >= ?", start_time)
-            quantity_users = budgets_followers.pluck(:decidim_user_id)
+            quantity_users = budgets_followers.pluck(:loz_user_record_id)
 
             {
               cumulative_users: cumulative_users.uniq,

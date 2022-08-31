@@ -1,3 +1,7 @@
+<h2><%= translated_attribute budget.title %></h2>
+<p>
+<%= translated_attribute(current_settings.more_information_modal).presence || translated_attribute(settings.more_information_modal) %>
+</p>
 <div class="row column voting-rules">
   <div class="callout warning">
     <div class="row">
@@ -7,70 +11,42 @@
         </h3>
         <ul>
           <%= raw current_rule_explanation %>
+          <li>Seul les lausannois.es enregistré.es au registre des habitants peuvent voter</li>
         </ul>
+        <% if user_record_submitted? %>
+         <h3 class="heading3">
+          Vos données personnelles
+        </h3>
+          <dl>
+            <dt>Prénom</dt>
+            <dd><%= current_user_record.first_name %></dd>
+            <dt>Nom de famille</dt>
+            <dd><%= current_user_record.last_name %></dd>
+            <dt>Date de naissance</dt>
+            <dd><%= current_user_record.birthdate %></dd>
+          </dl>
+          <% if !current_user && current_order_checked_out? %>
+            <%= button_to(
+              t("decidim.lausanne.budgets.projects.banner.terminate_session", count: current_order.total_projects),
+              lausanne_budget_user_record_path(lausanne_budget_id: current_user_record.budget.id, id: current_user_record.id),
+              method: :delete,
+              data: {
+                disable: true,
+              },
+              class: "button secondary hollow small"
+            ) %>
+          <% end %>
+        <% else %>
+          <button class="button primary small" data-toggle="userRecord">
+            J'ai compris,
+            commencer à voter
+          </button>    
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-<div class="card budget-summary" data-progress-reference data-safe-url="<%= budget_url(budget) %>">
-  <div class="card__content">
-    <% if include_heading %>
-      <% if current_order_checked_out? %>
-        <h3 class="heading3">
-          <%= t(".checked_out.title") %>
-          <% unless current_workflow.single? %>
-            <small><%= translated_attribute(budget.title) %></small>
-          <% end %>
-        </h3>
-        <p>
-          <%= raw t(".checked_out.description", cancel_link: link_to(t(".cancel_order"), budget_order_path(return_to: "budget"), method: :delete, class: "cancel-order", data: { confirm: t(".are_you_sure") })) %>
-        </p>
-      <% else %>
-        <h3 class="heading3">
-          <% if current_workflow.single? %>
-            <%= t(".title") %>
-          <% else %>
-            <%= translated_attribute(budget.title) %>
-          <% end %>
-        </h3>
-        <p>
-          <%= raw current_rule_description %>
-        </p>
-      <% end %>
-    <% end %>
 
-    <% if current_order.projects_rule? %>
-      <div class="budget-summary__total" data-total-allocation="<%= current_order.available_allocation %>">
-        <span class="mini-title"><%= t(".total_projects") %>
-          <strong class="mini-title__strong mini-title__strong--highlight">
-            <%= current_order.maximum_projects %>
-          </strong>
-        </span>
-      </div>
-    <% else %>
-      <div class="budget-summary__total" data-total-allocation="<%= current_order.available_allocation %>" data-total-budget="<%= budget.total_budget %>">
-        <span class="mini-title"><%= t(".total_budget") %>
-          <strong class="mini-title__strong mini-title__strong--highlight">
-            <%= budget_to_currency(budget.total_budget) %>
-          </strong>
-        </span>
-      </div>
-    <% end %>
-
-    <%= render partial: "order_progress" %>
-
-    <div>
-      <span class="mini-title">
-        <%= t(".assigned") %>
-        <%= render partial: "order_total_budget" %>
-      </span>
-    </div>
-
-    <%= cell("decidim/lausanne/budgets/budget_information_modal", budget) %>
-  </div>
-
-  <%= render partial: "order_selected_projects" %>
-</div>
 
 <%= render partial: "budget_excess" %>
 <%= render partial: "budget_confirm" %>

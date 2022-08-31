@@ -13,7 +13,7 @@ module Decidim
         paths["lib/tasks"] = nil
 
         routes do
-          resources :budgets do
+          resources :lausanne_budgets do
             resources :projects do
               collection do
                 resource :proposals_import, only: [:new, :create]
@@ -28,7 +28,7 @@ module Decidim
             resources :attachments
           end
 
-          root to: "budgets#index"
+          root to: "lausanne_budgets#index"
         end
 
         def load_seed

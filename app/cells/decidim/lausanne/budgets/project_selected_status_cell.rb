@@ -10,7 +10,7 @@ module Decidim
         def show
           if voting_finished? && model.selected?
             content_tag :span, class: css_class do
-              tdecidim.lausanne.budgetsts.projects.project.selected")
+              t("decidim.lausanne_budgets.projects.project.selected")
             end
           end
         end

@@ -25,7 +25,7 @@ module Decidim
 
             subject = I18n.t(
               "order_summary.subject",
-              scope: "decidim.lausanne.budgets.order_summary_mailer",
+              scope: "decidim.lausanne_budgets.order_summary_mailer",
               budget_name: translated_attribute(@budget.title),
               space_name: translated_attribute(@space.title)
             )

@@ -10,13 +10,22 @@ module Decidim
         extend ActiveSupport::Concern
 
         included do
-          helper_method :current_order, :can_have_order?, :voted_for?
+          helper_method :current_order, :can_have_order?, :voted_for?, :user_record_for_budget?,
+          :user_record_submitted?
 
-          # The current order created by the user.
-          #
-          # Returns an Order.
+          def user_record_for_budget?
+            return true if current_user_record.new_record?
+            current_user_record.order.id == current_order.id
+          end
+          def user_record_submitted?
+            !current_user_record.new_record?
+          end
+
           def current_order
-            @current_order ||= Order.includes(:projects).find_or_initialize_by(user: current_user, budget: budget)
+            @current_order ||= Order.includes(:projects).find_or_initialize_by(
+              user_record: current_user_record,
+              budget: budget
+            )
           end
 
           def current_order=(order)
@@ -28,10 +37,8 @@ module Decidim
           end
 
           def can_have_order?
-            current_user.present? &&
-              voting_open? &&
-              current_participatory_space.can_participate?(current_user) &&
-              allowed_to?(:create, :order, budget: budget, workflow: current_workflow)
+            voting_open? &&
+            allowed_to?(:create, :order, budget: budget, workflow: current_workflow)
           end
 
           # Return true if the user has voted the project

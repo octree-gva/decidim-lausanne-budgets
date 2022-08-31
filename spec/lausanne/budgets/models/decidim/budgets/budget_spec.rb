@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Decidim::Lausanne::Budgets::Budget do
+describe Decidim::Lausanne::Budgets::LausanneBudget do
   subject(:budget) { build(:budget) }
 
   it { is_expected.to be_valid }

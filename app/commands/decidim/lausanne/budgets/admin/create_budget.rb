@@ -37,7 +37,7 @@ module Decidim
               }
 
               @budget = Decidim.traceability.create!(
-                Budget,
+                LausanneBudget,
                 form.current_user,
                 attributes,
                 visibility: "all"

@@ -1,0 +1,30 @@
+<div class="reveal" id="userRecord" data-reveal>
+  <div class="reveal__header">
+    <h3 class="reveal__title">Données personnelles</h3>
+    <h4 class="reveal__subtitle"><%= translated_attribute(budget.title) %></h4>
+    <button class="close-button" data-close aria-label="Close" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="user_report_form">
+    <p>
+      Avant de commencer vos votes, nous devons récolter vos données personnelles
+      afin de les comparer au registre des habitants pour le dépouillement des votes.
+    </p>
+    <%= decidim_form_for([budget, @user_record_form], html: { class: "form edit_budget" }) do |form| %>
+      <div class="row column">
+        <%= form.text_field :first_name %>
+        <%= form.text_field :last_name %>
+        <%= form.date_field :birthdate %>
+        <%= form.check_box :allow_process_data, required: true %>
+        <%= form.check_box :its_me, required: true %>
+        <%= form.check_box :iam_lausanne, required: true %>
+        <div class="button--double form-general-submit">
+          <%= form.submit "Enregistrer et commencer à voter" %>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

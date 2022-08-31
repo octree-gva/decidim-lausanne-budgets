@@ -33,7 +33,7 @@ module Decidim
           end
 
           def i18n_scope
-         decidim.lausanne.budgetsgets.budgets_list"
+            "decidim.lausanne_budgets.budgets_list"
           end
       end
     end

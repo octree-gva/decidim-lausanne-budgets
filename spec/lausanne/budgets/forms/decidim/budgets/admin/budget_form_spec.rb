@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Decidim::Lausanne::Budgets::Admin::BudgetForm do
+describe Decidim::Lausanne::Budgets::Admin::LausanneBudgetForm do
   subject { described_class.from_params(attributes).with_context(context) }
 
   let(:organization) { create(:organization) }

@@ -12,7 +12,7 @@ module Decidim
         field :budgets, Decidim::Lausanne::Budgets::BudgetType.connection_type, null: true, connection: true
 
         def budgets
-          Budget.where(component: object).includes(:component)
+          LausanneBudget.where(component: object).includes(:component)
         end
 
         field :budget, Decidim::Lausanne::Budgets::BudgetType, null: true do
@@ -20,7 +20,7 @@ module Decidim
         end
 
         def budget(**args)
-          Budget.where(component: object).find_by(id: args[:id])
+          LausanneBudget.where(component: object).find_by(id: args[:id])
         end
       end
     end

@@ -11,7 +11,7 @@ module Decidim
 
         belongs_to :user_record, class_name: "Decidim::Lausanne::Budgets::UserRecord", foreign_key: "loz_user_record_id"
         has_one :user, through: :user_record, class_name: "Decidim::User", foreign_key: "decidim_user_id"
-        belongs_to :budget, foreign_key: "loz_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Budget", inverse_of: :orders
+        belongs_to :budget, foreign_key: "loz_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::LausanneBudget", inverse_of: :orders
         has_one :component, through: :budget, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
         has_many :line_items, class_name: "Decidim::Lausanne::Budgets::LineItem", foreign_key: "decidim_order_id", dependent: :destroy
         has_many :projects, through: :line_items, class_name: "Decidim::Lausanne::Budgets::Project", foreign_key: "decidim_project_id"
@@ -164,14 +164,14 @@ module Decidim
           return nil unless budget
 
           if projects_rule?
-            budget.settings.vote_selected_projects_maximum
+            budget.settings.vote_selected_projects_maximum.to_i
           else
             0
           end
         end
 
         def self.user_collection(user)
-          where(decidim_user_id: user.id)
+          where(user: user)
         end
 
         def self.export_serializer
@@ -184,8 +184,8 @@ module Decidim
                                  .where(budget: {
                                           decidim_components: { id: component.id }
                                         })
-                                 .group(:decidim_user_id)
-                                 .pluck(:decidim_user_id)
+                                 .group(:loz_user_record_id)
+                                 .pluck(:loz_user_record_id)
                                  .flatten.compact
         end
 

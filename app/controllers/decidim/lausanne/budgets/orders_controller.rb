@@ -13,12 +13,12 @@ module Decidim
           Checkout.call(current_order) do
             on(:ok) do
               flash[:notice] = I18n.t("orders.checkout.success", scope: "decidim")
-              redirect_to budgets_path
+              redirect_to lausanne_budgets_path
             end
 
             on(:invalid) do
               flash.now[:alert] = I18n.t("orders.checkout.error", scope: "decidim")
-              redirect_to budgets_path
+              redirect_to lausanne_budgets_path
             end
           end
         end
@@ -40,14 +40,14 @@ module Decidim
         private
 
           def budget
-            @budget ||= Budget.find_by(id: params[:budget_id])
+            @budget ||= current_user_record.budget
           end
 
           def redirect_path
             if params[:return_to] == "budget"
-              budget_path(budget)
+              lausanne_budget_path(budget)
             else
-              budgets_path
+              lausanne_budgets_path
             end
           end
       end

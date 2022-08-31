@@ -19,11 +19,11 @@ Decidim.register_component(:lausanne_budgets) do |component|
   component.actions = %(vote)
 
   component.on(:before_destroy) do |instance|
-    raise StandardError, "Can't remove this component" if Decidim::Lausanne::Budgets::Budget.where(component: instance).any?
+    raise StandardError, "Can't remove this component" if Decidim::Lausanne::Budgets::LausanneBudget.where(component: instance).any?
   end
 
   component.register_resource(:budget) do |resource|
-    resource.model_class_name = "Decidim::Lausanne::Budgets::Budget"
+    resource.model_class_name = "Decidim::Lausanne::Budgets::LausanneBudget"
     resource.card = "decidim/lausanne/budgets/budget"
     resource.searchable = true
   end
@@ -37,7 +37,7 @@ Decidim.register_component(:lausanne_budgets) do |component|
   end
 
   component.register_stat :budgets_count, primary: true, priority: Decidim::StatsRegistry::LOW_PRIORITY do |components|
-    Decidim::Lausanne::Budgets::Budget.where(component: components).count
+    Decidim::Lausanne::Budgets::LausanneBudget.where(component: components).count
   end
 
   component.register_stat :projects_count, priority: Decidim::StatsRegistry::LOW_PRIORITY do |components, start_at, end_at|
@@ -45,7 +45,7 @@ Decidim.register_component(:lausanne_budgets) do |component|
   end
 
   component.register_stat :orders_count do |components, start_at, end_at|
-    budgets = Decidim::Lausanne::Budgets::Budget.where(component: components)
+    budgets = Decidim::Lausanne::Budgets::LausanneBudget.where(component: components)
     orders = Decidim::Lausanne::Budgets::Order.where(component: budgets)
     orders = orders.where("created_at >= ?", start_at) if start_at.present?
     orders = orders.where("created_at <= ?", end_at) if end_at.present?
@@ -64,9 +64,9 @@ Decidim.register_component(:lausanne_budgets) do |component|
 
   component.exports :projects do |exports|
     exports.collection do |component_instance, _user, resource_id|
-      budgets = resource_id ? Decidim::Lausanne::Budgets::Budget.find(resource_id) : Decidim::Lausanne::Budgets::Budget.where(decidim_component_id: component_instance)
+      budgets = resource_id ? Decidim::Lausanne::Budgets::LausanneBudget.find(resource_id) : Decidim::Lausanne::Budgets::LausanneBudget.where(decidim_component_id: component_instance)
       Decidim::Lausanne::Budgets::Project
-        .where(decidim_budgets_budget_id: budgets)
+        .where(loz_budgets_budget_id: budgets)
         .includes(:category, :component)
     end
 
@@ -128,7 +128,7 @@ Decidim.register_component(:lausanne_budgets) do |component|
     )
 
     rand(1...3).times do
-      Decidim::Lausanne::Budgets::Budget.create!(
+      Decidim::Lausanne::Budgets::LausanneBudget.create!(
         component: component,
         title: Decidim::Faker::Localized.sentence(word_count: 2),
         description: Decidim::Faker::Localized.wrapped("<p>", "</p>") do
@@ -138,7 +138,7 @@ Decidim.register_component(:lausanne_budgets) do |component|
       )
     end
 
-    Decidim::Lausanne::Budgets::Budget.where(component: component).each do |budget|
+    Decidim::Lausanne::Budgets::LausanneBudget.where(component: component).each do |budget|
       rand(2...4).times do
         project = Decidim::Lausanne::Budgets::Project.create!(
           budget: budget,

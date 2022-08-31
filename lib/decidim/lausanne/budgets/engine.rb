@@ -13,8 +13,10 @@ module Decidim
         isolate_namespace Decidim::Lausanne::Budgets
 
         routes do
+
           resources :lausanne_budgets, only: [:index, :show] do
             resources :projects, only: [:index, :show]
+            resources :user_records, only: [:create, :destroy]
             resource :order, only: [:destroy] do
               member do
                 post :checkout
@@ -24,6 +26,10 @@ module Decidim
           end
 
           root to: "lausanne_budgets#index"
+        end
+
+        initializer "lausanne_budgets.middlewares" do |app|
+          app.config.middleware.insert_before Decidim::CurrentOrganization, Decidim::Lausanne::Budgets::CurrentUserRecordMiddleware
         end
 
         initializer "lausanne_budgets.assets" do |app|

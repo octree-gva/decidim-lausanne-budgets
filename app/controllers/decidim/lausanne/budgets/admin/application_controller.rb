@@ -13,7 +13,7 @@ module Decidim
           helper_method :budget, :projects, :project
 
           def budget
-            @budget ||= Budget.where(component: current_component).includes(:projects).find_by(id: params[:budget_id])
+            @budget ||= LausanneBudget.where(component: current_component).includes(:projects).find_by(id: params[:lausanne_budget_id])
           end
 
           def projects

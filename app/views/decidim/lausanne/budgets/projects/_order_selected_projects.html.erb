@@ -14,7 +14,7 @@
                 <%= budget_to_currency project.budget_amount %>
               </strong>
               <% unless current_order_checked_out? %>
-                <%= button_to budget_order_line_item_path(project_id: project), method: :delete, remote: true, data: { disable: true }, form: { style: "display: inline" } do %>
+                <%= button_to lausanne_budget_order_line_item_path(project_id: project), method: :delete, remote: true, data: { disable: true }, form: { style: "display: inline" } do %>
                   <%= icon("trash", aria_label: t(".remove"), role: "img") %>
                 <% end %>
               <% end %>

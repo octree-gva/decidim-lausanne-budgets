@@ -36,13 +36,13 @@ class MoveLausanneBudgetsToOwnModel < ActiveRecord::Migration[5.2]
     add_column :loz_budgets_projects, :decidim_component_id, :integer, index: true
     add_column :decidim_lausanne_budgets_orders, :decidim_component_id, :integer, index: true
 
-    Budget.find_each do |resource|
-      revert_budget_to_component(resource)
-      if resource
-        add_component_reference_to_projects(resource)
-        add_component_reference_to_orders(resource)
-      end
-    end
+    LausanneBudget.find_each do |resource|
+       revert_budget_to_component(resource)
+       if resource
+         add_component_reference_to_projects(resource)
+         add_component_reference_to_orders(resource)
+       end
+     end
   end
 
   # up methods
@@ -57,24 +57,24 @@ class MoveLausanneBudgetsToOwnModel < ActiveRecord::Migration[5.2]
       100_000_000
     end
 
-    Budget.create!(
+    LausanneBudget.create!(
       decidim_component_id: component.id,
       total_budget: component_total_budget,
       title: component.name
-    )
+     )
   end
 
   def add_budget_references_to_projects(resource)
     # rubocop:disable Rails/SkipsModelValidations
     Project.where(decidim_component_id: resource.decidim_component_id)
-           .update_all(decidim_budgets_budget_id: resource.id)
+           .update_all(loz_budgets_budget_id: resource.id)
     # rubocop:enable Rails/SkipsModelValidations
   end
 
   def add_budget_reference_to_orders(resource)
     # rubocop:disable Rails/SkipsModelValidations
     Order.where(decidim_component_id: resource.decidim_component_id)
-         .update_all(decidim_budgets_budget_id: resource.id)
+         .update_all(loz_budgets_budget_id: resource.id)
     # rubocop:enable Rails/SkipsModelValidations
   end
 
@@ -95,14 +95,14 @@ class MoveLausanneBudgetsToOwnModel < ActiveRecord::Migration[5.2]
 
   def add_component_reference_to_orders(resource)
     # rubocop:disable Rails/SkipsModelValidations
-    Order.where(decidim_budgets_budget_id: resource.id)
+    Order.where(loz_budgets_budget_id: resource.id)
          .update_all(decidim_component_id: resource.decidim_component_id)
     # rubocop:enable Rails/SkipsModelValidations
   end
 
   def add_component_reference_to_projects(resource)
     # rubocop:disable Rails/SkipsModelValidations
-    Project.where(decidim_budgets_budget_id: resource.id)
+    Project.where(loz_budgets_budget_id: resource.id)
            .update_all(decidim_component_id: resource.decidim_component_id)
     # rubocop:enable Rails/SkipsModelValidations
   end

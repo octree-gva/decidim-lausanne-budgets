@@ -50,7 +50,7 @@ module Decidim
                            &.order(title: :asc)
           end
 
-          # Finds the Budget from the decidim_budgets_budget_id.
+          # Finds the Budget from the loz_budgets_budget_id.
           #
           # Returns a Decidim::Lausanne::Budgets:Budget
           def budget

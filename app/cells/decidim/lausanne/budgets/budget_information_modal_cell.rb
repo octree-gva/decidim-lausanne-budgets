@@ -16,7 +16,7 @@ module Decidim
         end
 
         def i18n_scope
-         decidim.lausanne.budgetsts.budget_information_modal"
+          "decidim.lausanne_budgets.budget_information_modal"
         end
       end
     end

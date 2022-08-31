@@ -1,0 +1,60 @@
+$block: "votation_banner";
+.#{$block} {
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+  background: #eee;
+  border-top: 2px solid #2c2930;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+  @include breakpoint(medium){
+    flex-direction: row;
+    gap: 0;
+  }
+}
+.#{$block}__header {
+  flex: 2;
+  display: flex;
+  align-items: center;
+}
+.#{$block}__title {
+  font-size: 0.9em;
+  width: 100%;
+  margin-bottom: 0;
+  text-align: center;
+  @include breakpoint(medium) {
+    text-align: left;
+  }
+}
+
+.#{$block}__buttons {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+.#{$block}__actions {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  @include breakpoint(medium) {
+    margin-top: 0;
+    align-items: flex-end;
+  }
+  justify-content: center;
+  flex: 1;
+  gap: 1rem;
+  button {
+    margin: 0;
+  }
+}
+.#{$block}__helptext {
+  opacity: 0.8;
+  display: inline-block;
+  padding-left: 0.5rem;
+}

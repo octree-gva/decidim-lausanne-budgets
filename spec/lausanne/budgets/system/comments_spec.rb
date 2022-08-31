@@ -15,7 +15,7 @@ describe "Comments", type: :system do
       visit decidim_comments.comments_path(commentable_gid: commentable.to_signed_global_id.to_s)
 
       expect(page).to have_current_path(
-        decidim_budgets.budget_project_path(budget, commentable)
+        decidim_budgets.lausanne_budget_project_path(budget, commentable)
       )
     end
   end

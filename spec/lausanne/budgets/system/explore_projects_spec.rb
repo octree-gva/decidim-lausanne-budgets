@@ -104,13 +104,13 @@ describe "Explore projects", :slow, type: :system do
 
     context "when directly accessing from URL with an invalid budget id" do
       it_behaves_like "a 404 page" do
-        let(:target_path) { decidim_budgets.budget_projects_path(99_999_999) }
+        let(:target_path) { decidim_budgets.lausanne_budget_projects_path(99_999_999) }
       end
     end
 
     context "when directly accessing from URL with an invalid project id" do
       it_behaves_like "a 404 page" do
-        let(:target_path) { decidim_budgets.budget_project_path(budget, 99_999_999) }
+        let(:target_path) { decidim_budgets.lausanne_budget_project_path(budget, 99_999_999) }
       end
     end
   end
@@ -122,6 +122,6 @@ describe "Explore projects", :slow, type: :system do
     end
 
     def visit_budget
-      page.visit decidim_budgets.budget_projects_path(budget)
+      page.visit decidim_budgets.lausanne_budget_projects_path(budget)
     end
 end

@@ -5,8 +5,6 @@ module Decidim
     module Budgets
       class Permissions < Decidim::DefaultPermissions
         def permissions
-          return permission_action unless user
-
           # Delegate the admin permission checks to the admin permissions class
           return Decidim::Lausanne::Budgets::Admin::Permissions.new(user, permission_action, context).permissions if permission_action.scope == :admin
           return permission_action if permission_action.scope != :public
@@ -57,7 +55,6 @@ module Decidim
 
           def can_vote_project?(a_project)
             is_allowed = a_project && authorized?(:vote, resource: project)
-
             toggle_allow(is_allowed)
           end
       end

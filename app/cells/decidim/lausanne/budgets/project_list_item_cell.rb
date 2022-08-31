@@ -12,8 +12,9 @@ module Decidim
         include Decidim::Lausanne::Budgets::ProjectsHelper
         include Decidim::Lausanne::Budgets::Engine.routes.url_helpers
 
-        delegate :current_user, :current_settings, :current_order, :current_component,
-                 :current_participatory_space, :can_have_order?, :voting_open?, :voting_finished?, to: :parent_controller
+        delegate :current_user, :current_settings, :current_order, :current_user_record,  :current_component,
+                 :current_participatory_space, :can_have_order?, :voting_open?, :voting_finished?,
+                 :user_record_for_budget?, :voted_for?, :user_record_submitted?, to: :parent_controller
 
         private
 
@@ -41,30 +42,29 @@ module Decidim
           end
 
           def vote_button_disabled?
-            current_user && !can_have_order?
+            !can_have_order?
           end
 
           def vote_button_class
+            return "disabled" unless user_record_submitted?
             return "success" if resource_added?
-
             "hollow"
           end
 
           def vote_button_method
             return :delete if resource_added?
-
             :post
           end
 
           def vote_button_label
             if resource_added?
               return t(
-             decidim.lausanne.budgetsgets.projects.project.remove",
+                "decidim.lausanne.budgets.projects.project.remove",
                 resource_name: resource_title
               )
             end
 
-           decidim.lausanne.budgetsgets.projects.project.add", resource_name: resource_title)
+            t("decidim.lausanne.budgets.projects.project.add", resource_name: resource_title)
           end
       end
     end

@@ -12,10 +12,12 @@ module Decidim
         helper_method :projects, :project, :budget
 
         def index
+          @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
         end
 
         def show
+          @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
           raise ActionController::RoutingError, "Not Found" unless project
         end
@@ -23,7 +25,7 @@ module Decidim
         private
 
           def budget
-            @budget ||= Budget.where(component: current_component).includes(:projects).find_by(id: params[:budget_id])
+            @budget ||= LausanneBudget.where(component: current_component).includes(:projects).find_by(id: params[:lausanne_budget_id])
           end
 
           def projects

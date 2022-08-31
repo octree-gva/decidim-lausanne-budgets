@@ -6,6 +6,7 @@ module Decidim
       module Admin
         class Permissions < Decidim::DefaultPermissions
           def permissions
+            return permission_action unless user
             return permission_action if permission_action.scope != :admin
 
             case permission_action.subject

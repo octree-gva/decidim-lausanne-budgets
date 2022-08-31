@@ -43,7 +43,7 @@ module Decidim
             end
 
             it "updates the project" do
-              allow(controller).to receive(:budget_projects_path).and_return("/projects")
+              allow(controller).to receive(:lausanne_budget_projects_path).and_return("/projects")
 
               patch :update, params: params
 

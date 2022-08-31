@@ -18,7 +18,7 @@
           t("cancel_order.only_one", scope: i18n_scope),
           budget_order_path(voted.first),
           method: :delete,
-          data: { confirm: t("projects.budget_summary.are_you_sure", scope: "decidim.lausanne.budgets") }) if voted.one? %>
+          data: { confirm: t("projects.budget_summary.are_you_sure", scope: "decidim.lausanne_budgets") }) if voted.one? %>
         </p>
 
         <% if !voted.one? && voted.any? %>
@@ -31,7 +31,7 @@
                             method: :delete,
                             class: "cancel-order",
                             data: {
-                              confirm: t("projects.budget_summary.are_you_sure", scope: "decidim.lausanne.budgets")
+                              confirm: t("projects.budget_summary.are_you_sure", scope: "decidim.lausanne_budgets")
                             }) %>
               </li>
             <% end %>

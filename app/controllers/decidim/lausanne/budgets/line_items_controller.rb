@@ -7,16 +7,16 @@ module Decidim
       class LineItemsController < Decidim::Lausanne::Budgets::ApplicationController
         include NeedsCurrentOrder
 
-        helper_method :budget, :project
+        helper_method :budget, :project, :user_record
 
         def create
           enforce_permission_to :vote, :project, project: project, budget: budget, workflow: current_workflow
-
           respond_to do |format|
+
             AddLineItem.call(persisted_current_order, project, current_user) do
               on(:ok) do |order|
                 self.current_order = order
-                format.html { redirect_back(fallback_location: budget_path(budget)) }
+                format.html { redirect_back(fallback_location: lausanne_budget_path(budget)) }
                 format.js { render "update_budget" }
               end
 
@@ -30,8 +30,9 @@ module Decidim
         def destroy
           respond_to do |format|
             RemoveLineItem.call(current_order, project) do
-              on(:ok) do |_order|
-                format.html { redirect_back(fallback_location: budget_path(budget)) }
+              on(:ok) do |order|
+                self.current_order = order
+                format.html { redirect_back(fallback_location: lausanne_budget_path(budget)) }
                 format.js { render "update_budget" }
               end
 
@@ -43,9 +44,14 @@ module Decidim
         end
 
         private
-
+          def user_record
+            @user_record = current_user_record
+          end
           def project
-            @project ||= Project.includes(:budget).find_by(id: params[:project_id], decidim_budgets_budget_id: params[:budget_id])
+            @project ||= Project.includes(:budget).find_by(
+              id: params.require(:project_id),
+              loz_budgets_budget_id: params.require(:lausanne_budget_id)
+            )
           end
 
           def budget

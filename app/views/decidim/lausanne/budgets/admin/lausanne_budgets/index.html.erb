@@ -9,7 +9,7 @@
           <%= export_dropdown %>
         <% end %>
         <div id="js-other-actions-wrapper">
-          <%= link_to t("actions.new", scope: "decidim.lausanne.budgets", name: t("models.budget.name", scope: "decidim.lausanne.budgets.admin")), new_budget_path, class: "button tiny button--title" if allowed_to? :create, :budget %>
+          <%= link_to t("actions.new", scope: "decidim.lausanne_budgets", name: t("models.budget.name", scope: "decidim.lausanne_budgets.admin")), new_lausanne_budget_path, class: "button tiny button--title" if allowed_to? :create, :budget %>
         </div>
       </div>
     </h2>
@@ -20,11 +20,11 @@
       <table class="table-list">
         <thead>
           <tr>
-            <th><%= t("models.budget.fields.name", scope: "decidim.lausanne.budgets") %></th>
-            <th><%= t("models.budget.fields.total_budget", scope: "decidim.lausanne.budgets") %></th>
-            <th><%= t("models.budget.fields.projects_count", scope: "decidim.lausanne.budgets") %></th>
+            <th><%= t("models.budget.fields.name", scope: "decidim.lausanne_budgets") %></th>
+            <th><%= t("models.budget.fields.total_budget", scope: "decidim.lausanne_budgets") %></th>
+            <th><%= t("models.budget.fields.projects_count", scope: "decidim.lausanne_budgets") %></th>
             <%= th_resource_scope_label %>
-            <th class="actions"><%= t("actions.title", scope: "decidim.lausanne.budgets") %></th>
+            <th class="actions"><%= t("actions.title", scope: "decidim.lausanne_budgets") %></th>
           </tr>
         </thead>
         <tbody>
@@ -37,22 +37,22 @@
                 <%= number_to_currency budget.total_budget, unit: Decidim.currency_unit, precision: 0 %>
               </td>
               <td>
-                <%= link_to budget.projects.count, budget_projects_path(budget) %>
+                <%= link_to budget.projects.count, lausanne_budget_projects_path(budget) %>
               </td>
               <%= td_resource_scope_for(budget.scope) %>
               <td class="table-list__actions">
-                <%= icon_link_to "eye", resource_locator(budget).path, t("actions.preview", scope: "decidim.lausanne.budgets"), class: "action-icon--preview", target: :blank %>
+                <%= icon_link_to "eye", resource_locator(budget).path, t("actions.preview", scope: "decidim.lausanne_budgets"), class: "action-icon--preview", target: :blank %>
 
-                <%= icon_link_to "list", budget_projects_path(budget), t("actions.edit_projects", scope: "decidim.lausanne.budgets"), class: "action-icon--edit-projects" %>
+                <%= icon_link_to "list", lausanne_budget_projects_path(budget), t("actions.edit_projects", scope: "decidim.lausanne_budgets"), class: "action-icon--edit-projects" %>
 
                 <% if allowed_to? :update, :budget, budget: budget %>
-                  <%= icon_link_to "pencil", edit_budget_path(budget), t("actions.edit", scope: "decidim.lausanne.budgets"), class: "action-icon--edit" %>
+                  <%= icon_link_to "pencil", edit_lausanne_budget_path(budget), t("actions.edit", scope: "decidim.lausanne_budgets"), class: "action-icon--edit" %>
                 <% else %>
                   <%= icon "pencil", class: "action-icon action-icon--disabled", role: "img" %>
                 <% end %>
 
                 <% if allowed_to? :delete, :budget, budget: budget %>
-                  <%= icon_link_to "circle-x", budget_path(budget), t("actions.destroy", scope: "decidim.lausanne.budgets"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.lausanne.budgets") } %>
+                  <%= icon_link_to "circle-x", lausanne_budget_path(budget), t("actions.destroy", scope: "decidim.lausanne_budgets"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.lausanne_budgets") } %>
                 <% else %>
                   <%= icon "circle-x", class: "action-icon action-icon--disabled", role: "img" %>
                 <% end %>

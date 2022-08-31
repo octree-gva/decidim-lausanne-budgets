@@ -4,7 +4,7 @@ module Decidim
   module Lausanne
     module Budgets
       # The data store for a budget in the Decidim::Lausanne::Budgets component.
-      class Budget < ApplicationRecord
+      class LausanneBudget < ApplicationRecord
         include Decidim::Resourceable
         include Decidim::ScopableResource
         include Decidim::HasComponent
@@ -12,6 +12,7 @@ module Decidim
         include Traceable
         include Loggable
 
+        self.table_name = :loz_budgets_budgets
         component_manifest_name "lausanne_budgets"
 
         has_many :projects, foreign_key: "loz_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::Project", inverse_of: :budget, dependent: :destroy

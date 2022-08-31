@@ -1,6 +1,6 @@
 <div class="<%= card_class %>">
   <div class="card--list__text">
-    <%= link_to budget_path(budget), class: link_class do %>
+    <%= link_to lausanne_budget_path(budget), class: link_class do %>
       <% if voted? && !voting_finished? %>
         <strong>
           <%= translated_attribute(title) %>

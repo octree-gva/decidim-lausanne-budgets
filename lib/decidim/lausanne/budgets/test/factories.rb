@@ -100,7 +100,7 @@ FactoryBot.define do
     end
   end
 
-  factory :budget, class: "Decidim::Lausanne::Budgets::Budget" do
+  factory :budget, class: "Decidim::Lausanne::Budgets::LausanneBudget" do
     title { generate_localized_title }
     description { Decidim::Faker::Localized.wrapped("<p>", "</p>") { generate_localized_title } }
     total_budget { 100_000_000 }
@@ -137,10 +137,17 @@ FactoryBot.define do
       end
     end
   end
-
+  factory :user_record, calss: "Decidim::Lausanne::Budgets::UserRecord" do
+    first_name { "John" }
+    last_name { "Doe" }
+    birthdate { "13/12/1995" }
+    trait :with_user do
+      user { create(:user, organization: budget.component.organization) }
+    end
+  end
   factory :order, class: "Decidim::Lausanne::Budgets::Order" do
     budget { create(:budget) }
-    user { create(:user, organization: component.organization) }
+    user { create(:user_record, organization: component.organization) }
 
     trait :with_projects do
       transient do

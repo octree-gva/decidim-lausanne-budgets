@@ -21,7 +21,7 @@ module Decidim
             contents = []
             contents << icon("check", role: "img")
             contents << " "
-            contents <<decidim.lausanne.budgetsgets.projects.project.you_voted")
+            contents << t("decidim.budgets.projects.project.you_voted")
           end
 
           def css_class

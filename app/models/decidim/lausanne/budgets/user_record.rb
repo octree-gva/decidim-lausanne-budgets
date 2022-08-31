@@ -3,12 +3,24 @@
 module Decidim
   module Lausanne
     module Budgets
-      # The data store for a personal record submitted to 
+      # The data store for a personal record submitted to
       # start a vote order.
       class UserRecord < ApplicationRecord
         include Traceable
-        # Reference to connected user, if the user is logged in.
-        has_one :user, class_name: "Decidim::User", foreign_key: "decidim_user_id"
+        self.table_name = :decidim_lausanne_user_records
+        belongs_to :user,
+          class_name: "Decidim::User",
+          foreign_key: "decidim_user_id",
+          optional: true
+
+        has_one :order,
+          class_name: "Decidim::Lausanne::Budgets::Order",
+          foreign_key: "loz_user_record_id"
+        has_one :budget, through: :order, foreign_key: "loz_budgets_budget_id"
+
+        def has_budget?
+          !!budget
+        end
       end
     end
   end
