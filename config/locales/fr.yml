@@ -163,6 +163,12 @@ fr:
           banner:
             terminate_session: |
               J'ai terminé, fermer ma session
+            checked_out: Vote terminé
+            pending_order: Vote en cours
+            finalize: Finaliser le vote
+            user_data_help: |
+              Saisissez vos informations personnelles pour pouvoir voter — même sans compte
+            user_data_action: Commencer à voter
             cancel_order:
               one: Retirer son vote
               other: Retirer ses %{count} votes
@@ -190,6 +196,7 @@ fr:
               description: À quels projets pensez-vous que nous devrions allouer un budget ? Assignez au moins %{minimum_budget} aux projets que vous soutenez et votez selon vos préférences pour définir le budget.
               instruction: "<li>Assignez au moins %{minimum_budget} aux projets que vous soutenez et votez selon vos préférences pour définir le budget.</li>"
           budget_summary:
+            start_voting: J'ai compris, commencer à voter
             are_you_sure: Êtes-vous certain de vouloir annuler votre vote ?
             assigned: "Affecté à :"
             cancel_order: supprimer votre vote et recommencer
@@ -205,8 +212,10 @@ fr:
             projects_rule_maximum_only:
               description: A quels projets pensez-vous que nous devrions allouer un budget ? Sélectionnez au maximum %{maximum_number} projets que vous soutenez et votez selon vos préférences pour définir le budget.
               instruction: "<li>Sélectionnez au maximum %{maximum_number} projets que vous souhaitez et votez selon vos préférences pour définir le budget.</li>"
+            user_record: Vos données personnelles
             rules:
               title: Règles du vote
+              extra_rule: "<li>Seul les lausannois.es enregistré.es au registre des habitants peuvent voter</li>"
             title: Vous décidez du budget
             total_budget: Budget total
             total_projects: Nombre total de votes

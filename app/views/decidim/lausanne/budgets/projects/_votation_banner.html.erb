@@ -2,7 +2,7 @@
 <% if current_order_checked_out? %>
   <div class="votation_banner__header">
     <h3 class="votation_banner__title">
-      Vote terminé
+      <%= t("decidim.lausanne.budgets.projects.banner.checked_out.title") %>
     </h3>
   </div>
   <div class="votation_banner__actions">
@@ -23,7 +23,7 @@
   <% if user_record_submitted? %>
     <div class="votation_banner__header">
       <h3 class="votation_banner__title">
-        Vote en cours
+        <%= t("decidim.lausanne.budgets.projects.banner.pending_order") %>
         <div class="votation_banner__helptext">
           <%= current_rule_explanation("banner") %>
         </div>
@@ -43,20 +43,20 @@
         class: "button secondary hollow small"
       ) %>
       <button data-toggle="budget-confirm" class="button primary small" <%= budget_confirm_disabled_attr %>>
-        Finaliser le vote
+        <%= t("decidim.lausanne.budgets.projects.banner.finalize") %>
       </button>    
     </div>
     <% else %>
     <div class="votation_banner__header">
       <h3 class="votation_banner__title">
         <div class="votation_banner__helptext">
-          Saisissez vos informations personnelles pour pouvoir voter — même sans compte
+          <%= t("decidim.lausanne.budgets.projects.banner.user_data_help") %>
         </div>
       </h3>
     </div>
     <div class="votation_banner__actions">
       <button class="button primary small" data-toggle="userRecord">
-        Commencer à voter
+        <%= t("decidim.lausanne.budgets.projects.banner.user_data_action") %>
       </button>    
     </div>
     <% end %>

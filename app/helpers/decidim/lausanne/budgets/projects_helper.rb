@@ -61,7 +61,7 @@ module Decidim
             t(
               "#{i18n_scope}.minimum_projects_rule.instruction",
               minimum_number: current_order.minimum_projects.to_i,
-              count: current_order.minimum_projects - current_order.total_projects
+              count: [current_order.minimum_projects - current_order.total_projects, 0].max
             )
           else
             t(

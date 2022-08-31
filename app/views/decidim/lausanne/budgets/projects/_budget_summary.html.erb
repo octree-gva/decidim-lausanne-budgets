@@ -11,18 +11,18 @@
         </h3>
         <ul>
           <%= raw current_rule_explanation %>
-          <li>Seul les lausannois.es enregistré.es au registre des habitants peuvent voter</li>
-        </ul>
-        <% if user_record_submitted? %>
-         <h3 class="heading3">
-          Vos données personnelles
-        </h3>
+          <%= raw t(".rules.extra_rule") %>
+          </ul>
+          <% if user_record_submitted? %>
+          <h3 class="heading3">
+            <%= t(".user_record") %>
+          </h3>
           <dl>
-            <dt>Prénom</dt>
+            <dt><%= t("activemodel.attributes.user_record.first_name") %></dt>
             <dd><%= current_user_record.first_name %></dd>
-            <dt>Nom de famille</dt>
+            <dt><%= t("activemodel.attributes.user_record.last_name") %></dt>
             <dd><%= current_user_record.last_name %></dd>
-            <dt>Date de naissance</dt>
+            <dt><%= t("activemodel.attributes.user_record.birthdate") %></dt>
             <dd><%= current_user_record.birthdate %></dd>
           </dl>
           <% if !current_user && current_order_checked_out? %>
@@ -33,13 +33,12 @@
               data: {
                 disable: true,
               },
-              class: "button secondary hollow small"
+              class: "button primary small"
             ) %>
           <% end %>
         <% else %>
           <button class="button primary small" data-toggle="userRecord">
-            J'ai compris,
-            commencer à voter
+            <%= t(".start_voting") %>
           </button>    
         <% end %>
       </div>
