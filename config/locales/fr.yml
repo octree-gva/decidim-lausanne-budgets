@@ -144,6 +144,13 @@ fr:
             voted_on_space: Vous avez voté sur le budget %{budget_name} pour l'espace participatif %{space_name}.
             voted_on_space_with_scope: Vous avez voté sur le budget %{budget_name} pour l'espace participatif %{space_name} sur %{scope_name} (%{scope_type}).
         projects:
+          user_record_form:
+            title: "Récolte de données personnelles"
+            close: "Fermer"
+            explanations: |
+              Pour pouvoir récolter les votes, nous devons récolter vos données personnelles
+              afin de les comparer au registre des habitants.<br />
+              Ces données seront utilisées pour le dépouillement des votes.
           budget_confirm:
             are_you_sure: Si vous changez d'avis, vous pourrez modifier votre vote plus tard.
             cancel: Annuler

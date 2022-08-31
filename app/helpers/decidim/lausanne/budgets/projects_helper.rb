@@ -41,7 +41,7 @@ module Decidim
           current_order&.can_checkout?
         end
 
-        def current_rule_explanation(scope="budget_summary")
+        def current_rule_explanation(scope = "budget_summary")
           return unless current_order
           i18n_scope = "decidim.lausanne.budgets.projects.#{scope}"
           if current_order.projects_rule?
@@ -78,12 +78,12 @@ module Decidim
               t(
                 ".projects_rule.description",
                 minimum_number: current_order.minimum_projects,
-                maximum_number: current_order.maximum_projects,                 
+                maximum_number: current_order.maximum_projects,
                 scope: "decidim.lausanne.budgets.projects.budget_summary"
               )
             else
               t(
-                ".projects_rule_maximum_only.description", 
+                ".projects_rule_maximum_only.description",
                 maximum_number: current_order.maximum_projects.to_i,
                 scope: "decidim.lausanne.budgets.projects.budget_summary"
             )
