@@ -271,7 +271,7 @@ fr:
       lausanne_budgets:
         actions:
           vote: Voter
-        name: Public Budgets
+        name: Budgets Publiques
         settings:
           global:
             announcement: Annonce
