@@ -13,10 +13,10 @@
     <%= decidim_form_for([budget, @user_record_form], html: { class: "form edit_budget" }) do |form| %>
       <div class="row column">
         <div class="fields">
+          <%= form.check_box :allow_process_data, required: true %>
           <%= form.text_field :first_name %>
           <%= form.text_field :last_name %>
           <%= form.date_field :birthdate %>
-          <%= form.check_box :allow_process_data, required: true %>
           <%= form.check_box :its_me, required: true %>
           <%= form.check_box :iam_lausanne, required: true %>
         </div>
