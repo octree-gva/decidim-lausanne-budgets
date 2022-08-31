@@ -20,32 +20,47 @@
     </a>
 </p>
 
-# Spammer Signaler
+# Public Participatory Budgeting
 
-Automation to verify and signal spammer users, sponsored by the [Participer Lausanne](https://participer.lausanne.ch).
+This repository create a new participatory component, cloned from participatory budgets. It is done on decidim version 0.24.3 exclusively for now.
+
+## Usage
+
+* As a non-connected user, I can insert my personal data, and use it to vote. This data will be checked oveer the official residentship database.
+* As a non-connected user, I have a clear view on the vote process. First insert my personal data, then vote, then finalize my vote.
+
+## Restrictions
+From the original budget component, the following features are not implemented: 
+
+1. Authorizations: You can not define authorizations for this component (as it authorized only registered user)
+2. Percentage rules: we improve the flow for `minimu_project` vote flow only. The others rules are un-tested and highly volatile
+
+## Warning
+This repository was done for the very specific use case of Lausanne City, you probably won't find any usage of this module. 
 
 ## Why
+The data-protection law in Switzerland is clear: save the minimal data for a limited amount of time. 
+
+As at Lausanne we see PB have somehow lower participation rates, we decide to experiment around public access. We go through a another strategy than Authorization in order to: 
+
+- Keep the submissions in the context of a PB
+- Be able to remove user data without affecting behaviour
+- Having a nicer UX flow as we now know there is a first step process in PB. 
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-spam_signal", git: "https://github.com/octree-gva/decidim-module-spam_signal"
+gem "decidim-lausanne-budgets", git: "https://github.com/octree-gva/decidim-lausanne-budgets"
 ```
 
 Then execute:
 
 ```bash
 bundle
-bundle exec rails decidim_spam_signal:install:migrations
+bundle exec rails decidim_lausanne_budgets:install:migrations
 bundle exec rails db:migrate
-```
-
-## Config ENVs
-
-```bash
-export USER_BOT_EMAIL='bot@example.ch' # user-bot used for signaling the spammers
 ```
 
 ## Testing
@@ -56,6 +71,15 @@ If you haven't done it already, [install](https://docs.docker.com/get-docker/) d
 
 ```bash
     bundle exec rake test_app
+```
+## Local development
+
+The [Rakefile](Rakefile) is shipped with a
+`development_app` using `docker-compose` to run a database.
+If you haven't done it already, [install](https://docs.docker.com/get-docker/) docker](https://docs.docker.com/get-docker/).
+
+```bash
+    bundle exec rake development_app
 ```
 
 ## Contributing
