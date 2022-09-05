@@ -20,6 +20,7 @@ module Decidim
         validates :its_me, presence: true
         validates :iam_lausanne, presence: true
         validate :budget_context
+        validate :unique!
 
         def budget_context
           errors.add(:base, "Budget context should be passed to UserRecordForm") unless budget.present?
@@ -35,6 +36,11 @@ module Decidim
         # and compare it to the database.
         def unique?
           !copies.exists?
+        end
+
+        def unique!
+          return if context.user
+          errors.add(:base, "Vous avez déjà soumis votre vote") unless unique?
         end
 
         def copies

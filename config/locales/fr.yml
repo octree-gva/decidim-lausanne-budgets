@@ -204,6 +204,7 @@ fr:
               instruction: "<li>Assignez au moins %{minimum_budget} aux projets que vous soutenez et votez selon vos préférences pour définir le budget.</li>"
           budget_summary:
             start_voting: J'ai compris, commencer à voter
+            update_user_record: "Mettre à jour ses informations"
             are_you_sure: Êtes-vous certain de vouloir annuler votre vote ?
             assigned: "Affecté à :"
             cancel_order: supprimer votre vote et recommencer

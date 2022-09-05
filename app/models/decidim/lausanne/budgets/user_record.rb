@@ -12,12 +12,13 @@ module Decidim
           class_name: "Decidim::User",
           foreign_key: "decidim_user_id",
           optional: true
-
         has_one :order,
           class_name: "Decidim::Lausanne::Budgets::Order",
           foreign_key: "loz_user_record_id"
         has_one :budget, through: :order, foreign_key: "loz_budgets_budget_id"
 
+        def unique_submission?
+        end
         def has_budget?
           !!budget
         end

@@ -12,7 +12,6 @@ module Decidim
 
         def show
           return unless budgets
-
           render
         end
 

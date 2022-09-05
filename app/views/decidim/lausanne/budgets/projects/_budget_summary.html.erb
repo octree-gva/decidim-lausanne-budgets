@@ -25,6 +25,11 @@
             <dt><%= t("activemodel.attributes.user_record.birthdate") %></dt>
             <dd><%= current_user_record.birthdate %></dd>
           </dl>
+          <% if current_user && !voting_finished? %>
+            <button class="button primary small" data-toggle="userRecord">
+              <%= t(".update_user_record") %>
+            </button>              
+          <% end %>
           <% if !current_user && current_order_checked_out? %>
             <%= button_to(
               t("decidim.lausanne.budgets.projects.banner.terminate_session", count: current_order.total_projects),
@@ -47,5 +52,5 @@
 </div>
 
 
-<%= render partial: "budget_excess" %>
-<%= render partial: "budget_confirm" %>
+<%= render partial: "decidim/lausanne/budgets/projects/budget_excess" %>
+<%= render partial: "decidim/lausanne/budgets/projects/budget_confirm" %>

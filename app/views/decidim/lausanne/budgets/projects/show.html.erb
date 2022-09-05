@@ -1,4 +1,4 @@
-<%= render partial: "votation_banner" %>
+<%= render partial: "decidim/lausanne/budgets/projects/votation_banner" %>
 
 <% add_decidim_meta_tags(
   title: translated_attribute(project.title),
@@ -18,7 +18,7 @@ edit_link(
 
 <div class="row column view-header">
   <% unless voting_finished? %>
-    <%= render partial: "budget_summary", locals: { include_heading: false } %>
+    <%= render partial: "decidim/lausanne/budgets/projects/budget_summary", locals: { include_heading: false } %>
   <% end %>
 
   <div class="m-bottom">
@@ -44,7 +44,7 @@ edit_link(
         <% if voting_finished? %>
           <%= cell("decidim/lausanne/budgets/project_voted_hint", project, class: "display-block") %>
         <% elsif voting_open? %>
-          <%= render partial: "project_budget_button", locals: { project: project } %>
+          <%= render partial: "decidim/lausanne/budgets/projects/project_budget_button", locals: { project: project } %>
         <% end %>
 
         <%= render partial: "decidim/shared/follow_button", locals: { followable: project, large: false  } %>
@@ -64,7 +64,7 @@ edit_link(
 </div>
 
 <%= comments_for project %>
-<%= render partial: "user_record_form" %>
+<%= render partial: "decidim/lausanne/budgets/projects/user_record_form" %>
 
 <%= attachments_for project %>
 <%= javascript_include_tag("decidim/lausanne/budgets/projects") %>

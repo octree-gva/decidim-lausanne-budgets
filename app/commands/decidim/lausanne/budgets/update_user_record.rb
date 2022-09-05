@@ -3,7 +3,7 @@
 module Decidim
   module Lausanne
     module Budgets
-      class CreateUserRecord < Rectify::Command
+      class UpdateUserRecord < Rectify::Command
         attr_reader :user_record, :budget, :current_user
         def initialize(user_record, budget, current_user)
           @user_record = user_record

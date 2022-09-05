@@ -52,6 +52,7 @@ module Decidim
             matches = UserRecord.where(id: user_record_id)
             match = matches.first
             return nil unless match
+            return nil if match.user && !current_user
             if current_user && !match.user
               match.update(user: current_user)
               match.reload

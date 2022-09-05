@@ -20,6 +20,12 @@
           <%= form.check_box :its_me, required: true %>
           <%= form.check_box :iam_lausanne, required: true %>
         </div>
+        <% unless @user_record_form.errors.empty? %>
+          <div class="callout small alert">
+            <h5>Impossible d'effectuer l'opération</h5>
+            <p>Vous avez déjà soumis votre vote.</p>
+          </div>
+        <% end %>
         <div class="actions">
           <div class="button--double form-general-submit">
             <%= form.submit "Enregistrer et commencer à voter" %>
