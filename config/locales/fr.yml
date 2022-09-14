@@ -210,6 +210,7 @@ fr:
               description: À quels projets pensez-vous que nous devrions allouer un budget ? Assignez au moins %{minimum_budget} aux projets que vous soutenez et votez selon vos préférences pour définir le budget.
               instruction: "<li>Assignez au moins %{minimum_budget} aux projets que vous soutenez et votez selon vos préférences pour définir le budget.</li>"
           budget_summary:
+            checked_out_sucess: "Vous avez voté"
             start_voting: J'ai compris, commencer à voter
             update_user_record: "Mettre à jour ses informations"
             are_you_sure: Êtes-vous certain de vouloir annuler votre vote ?

@@ -1,7 +1,7 @@
-<div id="VotationBanner" class="votation_banner">
+<div id="VotationBanner" class="votation_banner <%= "votation_banner--checked_out" if current_order_checked_out? %>">
 <% if current_order_checked_out? %>
   <div class="votation_banner__header">
-    <h3 class="votation_banner__title">
+    <h3 class="votation_banner__title heading6">
       <%= t("decidim.lausanne.budgets.projects.banner.checked_out.title") %>
     </h3>
   </div>

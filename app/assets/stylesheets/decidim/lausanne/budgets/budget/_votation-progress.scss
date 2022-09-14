@@ -17,6 +17,11 @@ $block: "votation_banner";
     flex-direction: row;
     gap: 0;
   }
+
+}
+.#{$block}--checked_out {
+  border-top-color: var(--success);
+  background: #ddf7e7;
 }
 .#{$block}__header {
   flex: 2;

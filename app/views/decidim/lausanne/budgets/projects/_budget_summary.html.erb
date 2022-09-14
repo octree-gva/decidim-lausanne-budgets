@@ -3,18 +3,24 @@
 <%= translated_attribute(current_settings.more_information_modal).presence %>
 </p>
 <div class="row column voting-rules">
-  <div class="callout warning">
+  <div class="callout <%= current_order_checked_out? ? "success" : "warning" %>">
     <div class="row">
       <div class="columns medium-8 large-9">
+      <% if current_order_checked_out? %>
+        <h3 class="heading3">
+          <%= t(".checked_out_sucess") %>
+        </h3>
+      <% else %>
         <h3 class="heading3">
           <%= t(".rules.title") %>
         </h3>
         <ul>
           <%= raw current_rule_explanation %>
           <%= raw t(".rules.extra_rule") %>
-          </ul>
+        </ul>
+      <% end %>
           <% if user_record_submitted? %>
-          <h3 class="heading3">
+          <h3 class="heading6">
             <%= t(".user_record") %>
           </h3>
           <dl>
@@ -31,6 +37,19 @@
             </button>              
           <% end %>
           <% if !current_user && current_order_checked_out? %>
+          <div style="display: flex; gap: 1rem">
+            <%= button_to(
+              t("decidim.lausanne.budgets.projects.banner.cancel_order", count: current_order.total_projects),
+              lausanne_budget_order_path(current_user_record.budget),
+              method: :delete,
+              data: {
+                disable: true,
+                budget: current_user_record.budget,
+                "redirect-url": lausanne_budget_path(current_user_record.budget)
+              },
+              disabled: current_order.total_projects == 0,
+              class: "button secondary hollow small"
+            ) %>
             <%= button_to(
               t("decidim.lausanne.budgets.projects.banner.terminate_session", count: current_order.total_projects),
               lausanne_budget_user_record_path(lausanne_budget_id: current_user_record.budget.id, id: current_user_record.id),
@@ -40,6 +59,7 @@
               },
               class: "button primary small"
             ) %>
+          </div>
           <% end %>
         <% else %>
           <button class="button primary small" data-toggle="userRecord">
