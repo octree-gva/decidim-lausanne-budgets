@@ -57,6 +57,10 @@ $block: "votation_banner";
   button {
     margin: 0;
   }
+  button.primary, button.primary.small,
+  button.primary:focus, button.primary.small:focus {
+    background: var(--primary);
+  }
 }
 .#{$block}__helptext {
   opacity: 0.8;
