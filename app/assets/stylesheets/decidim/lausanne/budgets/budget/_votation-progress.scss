@@ -60,6 +60,7 @@ $block: "votation_banner";
   button.primary, button.primary.small,
   button.primary:focus, button.primary.small:focus {
     background: var(--primary);
+    font-weight: 600;
   }
 }
 .#{$block}__helptext {
