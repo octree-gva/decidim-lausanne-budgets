@@ -7,6 +7,10 @@ module Decidim
         include Decidim::Lausanne::Budgets::Orderable
         helper_method :projects, :budget
 
+        def index
+          redirect_to lausanne_budget_path(budget)
+        end
+
         def show
           @user_record_form = UserRecordForm.from_params(
             params.require(:user_record)
@@ -21,6 +25,7 @@ module Decidim
           respond_to do |format|
             CreateUserRecord.call(@user_record_form, budget, current_user) do
               on(:ok) do |user_record|
+                flash[:notice] = I18n.t("user_record.create.success", scope: "decidim")
                 stick_user_record(user_record.id)
                 format.html { redirect_back(fallback_location: lausanne_budget_path(budget)) }
               end
