@@ -12,6 +12,7 @@ module Decidim
         helper_method :projects, :project, :budget
 
         def index
+          set_cache_headers
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
         end

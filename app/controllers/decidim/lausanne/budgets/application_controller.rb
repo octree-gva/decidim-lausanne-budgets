@@ -44,6 +44,11 @@ module Decidim
         end
 
         private
+          def set_cache_headers
+            response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+          end
           def find_current_user_record(user_record_id)
             if current_user
               user_record = UserRecord.where(user: current_user).first
