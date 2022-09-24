@@ -40,6 +40,9 @@ module Decidim
         def current_order_can_be_checked_out?
           current_order&.can_checkout?
         end
+        def display_rules?
+          !(user_record_submitted? || current_order.checked_out?)
+        end
 
         def current_rule_explanation(scope = "budget_summary")
           return unless current_order
