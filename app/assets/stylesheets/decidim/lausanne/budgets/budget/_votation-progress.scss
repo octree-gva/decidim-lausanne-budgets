@@ -29,7 +29,8 @@ $block: "votation_banner";
   align-items: center;
 }
 .#{$block}__title {
-  font-size: 0.9em;
+  text-transform: none;
+  font-size: 100%;
   width: 100%;
   margin-bottom: 0;
   text-align: center;
