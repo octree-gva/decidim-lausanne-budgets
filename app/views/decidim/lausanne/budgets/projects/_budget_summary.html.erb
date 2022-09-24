@@ -2,24 +2,25 @@
 <p>
 <%= translated_attribute(current_settings.more_information_modal).presence %>
 </p>
+<% if (hide_user_record && !user_record_submitted?) || (!hide_user_record) %>
 <div class="row column voting-rules">
   <div class="callout <%= current_order_checked_out? ? "success" : "warning" %>">
     <div class="row">
       <div class="columns medium-8 large-9">
       <% if current_order_checked_out? %>
-        <h3 class="heading3">
-          <%= t(".checked_out_sucess") %>
-        </h3>
+      <h3 class="heading3">
+      <%= t(".checked_out_sucess") %>
+      </h3>
       <% elsif display_rules? %>
-        <h3 class="heading3">
-          <%= t(".rules.title") %>
-        </h3>
-        <ul>
-          <%= raw current_rule_explanation %>
-          <%= raw t(".rules.extra_rule") %>
-        </ul>
+      <h3 class="heading3">
+      <%= t(".rules.title") %>
+      </h3>
+      <ul>
+      <%= raw current_rule_explanation %>
+      <%= raw t(".rules.extra_rule") %>
+      </ul>
       <% end %>
-          <% if user_record_submitted? %>
+          <% if user_record_submitted? && !hide_user_record.present? %>
           <h3 class="heading6">
             <%= t(".user_record") %>
           </h3>
@@ -66,10 +67,11 @@
             <%= t(".start_voting") %>
           </button>    
         <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
 
 <%= render partial: "decidim/lausanne/budgets/projects/budget_excess" %>

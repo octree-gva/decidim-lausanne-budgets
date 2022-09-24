@@ -9,7 +9,7 @@
       <%= t("decidim.lausanne_budgets.projects.projects_for", name: translated_attribute(budget.title)) %>
     </h2>
   <% else %>
-    <%= render partial: "decidim/lausanne/budgets/projects/budget_summary", locals: { include_heading: true } %>
+    <%= render partial: "decidim/lausanne/budgets/projects/budget_summary", locals: { include_heading: true, hide_user_record: false} %>
   <% end %>
 </div>
 

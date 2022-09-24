@@ -18,7 +18,7 @@ edit_link(
 
 <div class="row column view-header">
   <% unless voting_finished? %>
-    <%= render partial: "decidim/lausanne/budgets/projects/budget_summary", locals: { include_heading: false } %>
+    <%= render partial: "decidim/lausanne/budgets/projects/budget_summary", locals: { include_heading: false, hide_user_record: true } %>
   <% end %>
 
   <div class="m-bottom">
