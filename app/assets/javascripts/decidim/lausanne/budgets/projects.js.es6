@@ -19,7 +19,6 @@ $(() => {
     } else if ($el.parents("#authorizationModal").length > 0) {
       return true;
     }
-
     return false;
   }
 
@@ -61,7 +60,6 @@ $(() => {
       if (currentAllocation === 0 || (exitUrl && exitUrl.startsWith(safeUrl))) {
         return;
       }
-
       event.returnValue = true;
     });
   }
