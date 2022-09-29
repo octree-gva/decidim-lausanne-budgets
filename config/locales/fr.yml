@@ -186,6 +186,7 @@ fr:
             cancel_order:
               one: Retirer son vote
               other: Retirer ses %{count} votes
+            confirmation: "Confirmation"
             checked_out:
               description: Vous avez déjà voté pour le budget. Si vous avez changé d'avis, vous pouvez %{cancel_link}.
               title: Vote du budget terminé

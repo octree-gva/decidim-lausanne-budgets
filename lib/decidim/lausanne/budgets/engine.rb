@@ -17,7 +17,7 @@ module Decidim
           resources :lausanne_budgets, only: [:index, :show] do
             resources :projects, only: [:index, :show]
             resources :user_records
-            resource :order, only: [:destroy] do
+            resource :order, only: [:destroy, :show] do
               member do
                 post :checkout
               end

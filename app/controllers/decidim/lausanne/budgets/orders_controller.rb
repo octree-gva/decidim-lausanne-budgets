@@ -6,6 +6,9 @@ module Decidim
       # Exposes the order resource so users can checkout it.
       class OrdersController < Decidim::Lausanne::Budgets::ApplicationController
         include NeedsCurrentOrder
+        def show
+          byebug
+        end
 
         def checkout
           enforce_permission_to :vote, :project, order: current_order, budget: budget, workflow: current_workflow

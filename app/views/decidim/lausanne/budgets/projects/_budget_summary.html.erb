@@ -16,8 +16,8 @@
       <%= t(".rules.title") %>
       </h3>
       <ul>
-      <%= raw current_rule_explanation %>
-      <%= raw t(".rules.extra_rule") %>
+        <%= raw current_rule_explanation %>
+        <%= raw t(".rules.extra_rule") %>
       </ul>
       <% end %>
           <% if user_record_submitted? && !hide_user_record.present? %>
@@ -72,7 +72,6 @@
     </div>
   </div>
 <% end %>
-
 
 <%= render partial: "decidim/lausanne/budgets/projects/budget_excess" %>
 <%= render partial: "decidim/lausanne/budgets/projects/budget_confirm" %>

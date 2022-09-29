@@ -14,7 +14,6 @@ Decidim.register_component(:lausanne_budgets) do |component|
 
   component.newsletter_participant_entities = ["Decidim::Lausanne::Budgets::Order"]
 
-  component.query_type = "Decidim::Lausanne::Budgets::BudgetsType"
 
   component.actions = %(vote)
 
