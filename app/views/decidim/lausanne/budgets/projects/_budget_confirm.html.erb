@@ -8,16 +8,21 @@
     </div>
     <p><%= t(".description") %></p>
     <div class="card card--secondary">
-      <ul class="card__content">
+      <table class="card__content unstriped">
         <% current_order.projects.each do |project| %>
-          <li class="budget-summary__selected-item">
-            <%= link_to translated_attribute(project.title), resource_locator([budget, project]).path %>
+          <tr class="budget-summary__selected-item">
+            <td>
+              <%= link_to translated_attribute(project.title), resource_locator([budget, project]).path %>
+              <span class="budget-summary__excerpt"><%= raw translated_attribute(project.excerpt) %></span>
+            </td>
+            <td>
             <strong class="budget-summary__selected-number">
               <%= budget_to_currency project.budget_amount %>
             </strong>
-          </li>
+            </td>
+          </tr>
         <% end %>
-      </ul>
+      </table>
     </div>
     <p class="text-center"><%= t(".are_you_sure") %></p>
     <div class="row">

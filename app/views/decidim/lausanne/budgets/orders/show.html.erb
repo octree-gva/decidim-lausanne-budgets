@@ -45,7 +45,7 @@
     <tr class="budget-summary__selected-item">
       <td>
         <strong><%= translated_attribute(project.title) %></strong><br />
-        <%= translated_attribute(project.excerpt) %>
+        <%= raw translated_attribute(project.excerpt) %>
       </td>
       <td>
         <strong class="budget-summary__selected-number">
