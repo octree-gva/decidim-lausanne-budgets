@@ -63,7 +63,7 @@
             <dd><%= current_user_record.birthdate %></dd>
           </dl>
           <% if current_user && !voting_finished? %>
-            <button class="button secondary small hollow" data-toggle="userRecord">
+            <button class="link secondary small" data-toggle="userRecord">
               <%= t(".update_user_record") %>
             </button>
           <% end %>
