@@ -44,7 +44,8 @@
   <% current_order.projects.each do |project| %>
     <tr class="budget-summary__selected-item">
       <td>
-        <%= translated_attribute(project.title) %>
+        <strong><%= translated_attribute(project.title) %></strong><br />
+        <%= translated_attribute(project.excerpt) %>
       </td>
       <td>
         <strong class="budget-summary__selected-number">
