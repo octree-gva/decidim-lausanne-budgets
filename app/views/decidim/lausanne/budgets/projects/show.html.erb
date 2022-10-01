@@ -55,7 +55,7 @@ edit_link(
       <%= social_share_button_tag(
         "#{translated_attribute(project.title)}: les votes sont ouverts!",
         url: lausanne_budget_project_url(project.budget, project),
-        desc: decidim_sanitize(translated_attribute project.description),
+        desc: escape_once(strip_tags(decidim_sanitize(translated_attribute(project.description)))),
         allow_sites: %w(whatsapp_app facebook twitter email)
       ) %>
     </div>

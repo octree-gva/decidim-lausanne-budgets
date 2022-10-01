@@ -64,6 +64,7 @@
 <%= social_share_button_tag(
   "J'ai voté pour le #{translated_attribute(current_order.component.participatory_space.title)}", 
   :url => lausanne_budget_url(current_order.budget),
+  desc: translated_attribute(current_order.component.participatory_space.title),
   allow_sites: %w(whatsapp_app facebook twitter email)
   ) %>
   </div>
