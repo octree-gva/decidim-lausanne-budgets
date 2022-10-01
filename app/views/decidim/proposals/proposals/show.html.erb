@@ -129,11 +129,6 @@ extra_admin_link(
               <%= t("decidim.lausanne.budgets.linked_project.button") %>
               <% end %>
             <% end %>
-            <% if lausanne_project %>
-              <%= link_to resource_locator([lausanne_project.budget, lausanne_project]).url, class: "primary button expanded" do %>
-              <%= t("decidim.lausanne.budgets.linked_project.button") %>
-              <% end %>
-            <% end %>
             <% if current_settings.votes_enabled? %>
               <%= render partial: "votes_count", locals: { proposal: @proposal, from_proposals_list: false } %>
               <%= render partial: "vote_button", locals: { proposal: @proposal, from_proposals_list: false } %>
