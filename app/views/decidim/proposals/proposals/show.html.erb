@@ -75,13 +75,17 @@ extra_admin_link(
     <% if lausanne_project %>
       <div class="vote_link">
         <div class="vote_link__text">
-          <h3>Participe au vote</h3>
-          <p>Ce projet te tiens à coeur?<br />
-          Tu peux voter <%= link_to resource_locator([lausanne_project.budget, lausanne_project]).url, class: " " do %>ici<%end%></p>
+          <h3><%= t("decidim.lausanne.budgets.linked_project.cta.title") %></h3>
+          <p>
+            <%= raw t(
+              "decidim.lausanne.budgets.linked_project.cta.description",
+              link: resource_locator([lausanne_project.budget, lausanne_project]).url
+            ) %>
+          </p>
         </div>
         <div style="display:flex;">
           <%= link_to resource_locator([lausanne_project.budget, lausanne_project]).url, class: "vote_link__action button " do %>
-          Voter
+           <%= t("decidim.lausanne.budgets.linked_project.cta.action") %>
           <% end %>
         </div>
       </div>
@@ -117,7 +121,7 @@ extra_admin_link(
           <div class="card__content">
             <% if lausanne_project %>
               <%= link_to resource_locator([lausanne_project.budget, lausanne_project]).url, class: "primary button expanded" do %>
-              Voter
+              <%= t("decidim.lausanne.budgets.linked_project.button") %>
               <% end %>
             <% end %>
             <% if current_settings.votes_enabled? %>

@@ -153,6 +153,13 @@ fr:
             subject: Vous avez voté sur l'espace participatif %{space_name}
             voted_on_space: Vous avez voté sur le budget %{budget_name} pour l'espace participatif %{space_name}.
             voted_on_space_with_scope: Vous avez voté sur le budget %{budget_name} pour l'espace participatif %{space_name} sur %{scope_name} (%{scope_type}).
+        linked_project:
+          cta:
+            title: "Participe au vote"
+            description: |
+              Ce projet te tiens à coeur?<br />Tu peux voter <a href="%{link}">ici</a>
+            action: "Voter"
+          button: "Voter"
         projects:
           user_record_form:
             title: "Récolte de données personnelles"
