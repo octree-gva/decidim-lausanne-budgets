@@ -10,19 +10,34 @@
         <h3 class="heading3">
           <%= t(".checked_out_sucess") %>
         </h3>
+        <div style="display: flex; gap: 1rem;align-items: center;">
+          <%= button_to(
+            t("decidim.lausanne.budgets.projects.banner.cancel_order", count: current_order.total_projects),
+            lausanne_budget_order_path(current_user_record.budget),
+            method: :delete,
+            data: {
+              disable: true,
+              budget: current_user_record.budget,
+              "redirect-url": lausanne_budget_path(current_user_record.budget)
+            },
+            disabled: current_order.total_projects == 0,
+            class: "button secondary hollow small",
+              style: "margin-bottom: 0"
+              ) %>
         <%= link_to(
-          t("decidim.lausanne.budgets.projects.banner.confirmation", count: current_order.total_projects),
-          lausanne_budget_order_path(current_user_record.budget),
-          method: :get,
-          target: "_blank",
-          style: "margin-bottom: 0",
-          data: {
-            disable: true,
-            budget: current_user_record.budget,
-            "redirect-url": lausanne_budget_path(current_user_record.budget)
-          },
-          class: "primary small"
-        ) %>
+            t("decidim.lausanne.budgets.projects.banner.confirmation", count: current_order.total_projects),
+            lausanne_budget_order_path(current_user_record.budget),
+            method: :get,
+            target: "_blank",
+            style: "margin-bottom: 0",
+            data: {
+              disable: true,
+              budget: current_user_record.budget,
+              "redirect-url": lausanne_budget_path(current_user_record.budget)
+            },
+            class: "primary small"
+          ) %>
+          </div>
         </div>
     </div>
   </div>
@@ -61,25 +76,13 @@
           <% if !current_user && current_order_checked_out? %>
           <div style="display: flex; gap: 1rem">
             <%= button_to(
-              t("decidim.lausanne.budgets.projects.banner.cancel_order", count: current_order.total_projects),
-              lausanne_budget_order_path(current_user_record.budget),
-              method: :delete,
-              data: {
-                disable: true,
-                budget: current_user_record.budget,
-                "redirect-url": lausanne_budget_path(current_user_record.budget)
-              },
-              disabled: current_order.total_projects == 0,
-              class: "button secondary hollow small"
-            ) %>
-            <%= button_to(
               t("decidim.lausanne.budgets.projects.banner.terminate_session", count: current_order.total_projects),
               lausanne_budget_user_record_path(lausanne_budget_id: current_user_record.budget.id, id: current_user_record.id),
               method: :delete,
               data: {
                 disable: true,
               },
-              class: "button primary small"
+              class: "button secondary hollow small"
             ) %>
           </div>
           <% end %>

@@ -1,4 +1,11 @@
+<html>
+<head>
+
 <%= javascript_include_tag "decidim/social_share" %>
-<%= stylesheet_link_tag "decidim/lausanne/budgets/print.css", media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag "application.css", media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body class="lausanne_budget_print">
 
 <%= yield %>
+</body>
+</html>
