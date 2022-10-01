@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 module Decidim
   module Lausanne
     module Budgets
@@ -19,7 +18,7 @@ module Decidim
         def base_query
           raise "Missing budget" unless budget
           raise "Missing component" unless component
-
+          @scope.table.table_alias = "decidim_lausanne_budgets_projects"
           @scope.where(budget: budget)
         end
 

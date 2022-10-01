@@ -6,6 +6,7 @@ PATH
       decidim-core (= 0.24.3)
       kaminari (~> 1.2, >= 1.2.1)
       searchlight (~> 4.1)
+      social-share-button (~> 1.2, >= 1.2.1)
 
 GEM
   remote: https://rubygems.org/
