@@ -1,16 +1,37 @@
-<h2><%= translated_attribute budget.title %></h2>
 <p>
 <%= translated_attribute(current_settings.more_information_modal).presence %>
 </p>
 <% if (hide_user_record && !user_record_submitted?) || (!hide_user_record) %>
 <div class="row column voting-rules">
-  <div class="callout <%= current_order_checked_out? ? "success" : "warning" %>">
+  <div class="callout <%= current_order_checked_out? ? "success" : "secondary" %>">
     <div class="row">
       <div class="columns medium-8 large-9">
-      <% if current_order_checked_out? %>
-      <h3 class="heading3">
-      <%= t(".checked_out_sucess") %>
-      </h3>
+        <% if current_order_checked_out? %>
+        <h3 class="heading3">
+          <%= t(".checked_out_sucess") %>
+        </h3>
+        <%= link_to(
+          t("decidim.lausanne.budgets.projects.banner.confirmation", count: current_order.total_projects),
+          lausanne_budget_order_path(current_user_record.budget),
+          method: :get,
+          target: "_blank",
+          style: "margin-bottom: 0",
+          data: {
+            disable: true,
+            budget: current_user_record.budget,
+            "redirect-url": lausanne_budget_path(current_user_record.budget)
+          },
+          class: "primary small"
+        ) %>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="row column voting-rules">
+  <div class="callout secondary">
+    <div>
+      <div>
+        <div>
       <% elsif display_rules? %>
       <h3 class="heading3">
       <%= t(".rules.title") %>
@@ -33,9 +54,9 @@
             <dd><%= current_user_record.birthdate %></dd>
           </dl>
           <% if current_user && !voting_finished? %>
-            <button class="button primary small" data-toggle="userRecord">
+            <button class="button secondary small" data-toggle="userRecord">
               <%= t(".update_user_record") %>
-            </button>              
+            </button>
           <% end %>
           <% if !current_user && current_order_checked_out? %>
           <div style="display: flex; gap: 1rem">

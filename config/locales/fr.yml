@@ -1,4 +1,7 @@
 fr:
+  social_share_button:
+    whatsapp_app: Whatsapp
+    whatsapp_web: Whatsapp
   activemodel:
     attributes:
       budget:

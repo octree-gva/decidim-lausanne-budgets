@@ -7,7 +7,7 @@ module Decidim
       class OrdersController < Decidim::Lausanne::Budgets::ApplicationController
         include NeedsCurrentOrder
         def show
-          byebug
+          render layout: "lausanne_budgets/print"
         end
 
         def checkout

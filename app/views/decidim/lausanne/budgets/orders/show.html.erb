@@ -1,0 +1,68 @@
+<% user_record = current_order.user_record %>
+
+  <table class="personal-data"> 
+    <tbody>
+      <tr>
+        <td class="first-col">
+          <%= t("activemodel.attributes.user_record.first_name") %>
+        </td>
+        <td>
+          <%= user_record.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <td class="first-col">
+          <%= t("activemodel.attributes.user_record.last_name") %>
+        </td>
+        <td>
+          <%= user_record.last_name %>
+        </td>
+      </tr>
+      <tr>
+        <td class="first-col">
+          <%= t("activemodel.attributes.user_record.birthdate") %>
+        </td>
+        <td>
+          <%= user_record.birthdate %>
+        </td>
+      </tr>    
+      <tr>
+        <td class="first-col">
+          Vote finalisé le
+        </td>
+        <td>
+          <%= current_order.checked_out_at.strftime("%d/%m/%y @ %H:%M") %>
+        </td>
+      </tr>    
+  </tbody>
+</table>
+
+  <h1><%= link_to lausanne_budget_path(current_order.budget) do %>
+        <%= translated_attribute(current_order.component.participatory_space.title) -%><% end %> // Mon vote</h1>
+
+<table class="vote">
+  <% current_order.projects.each do |project| %>
+    <tr class="budget-summary__selected-item">
+      <td>
+        <%= translated_attribute(project.title) %>
+      </td>
+      <td>
+        <strong class="budget-summary__selected-number">
+          <%= budget_to_currency project.budget_amount %>
+        </strong>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="actions">
+  <%= link_to lausanne_budget_path(current_order.budget) do %>Retour<% end %>
+  <a onclick="window.print();return false;">Imprimer</a>
+</div>
+<div class="shares">
+<%= social_share_button_tag(
+  "J'ai voté pour le #{translated_attribute(current_order.component.participatory_space.title)}", 
+  :url => lausanne_budget_url(current_order.budget),
+  allow_sites: %w(whatsapp_app facebook twitter email)
+  ) %>
+  </div>

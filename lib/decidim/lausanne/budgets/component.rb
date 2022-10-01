@@ -9,12 +9,9 @@ Decidim.register_component(:lausanne_budgets) do |component|
   component.stylesheet = "decidim/lausanne/budgets/budgets"
   component.permissions_class_name = "Decidim::Lausanne::Budgets::Permissions"
   component.component_form_class_name = "Decidim::Lausanne::Budgets::Admin::ComponentForm"
-
   component.data_portable_entities = ["Decidim::Lausanne::Budgets::Order"]
-
   component.newsletter_participant_entities = ["Decidim::Lausanne::Budgets::Order"]
-
-
+  component.query_type = "Decidim::Lausanne::Budgets::LausanneBudgetsType"
   component.actions = %(vote)
 
   component.on(:before_destroy) do |instance|
