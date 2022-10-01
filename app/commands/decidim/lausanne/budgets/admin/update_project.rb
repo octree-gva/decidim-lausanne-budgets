@@ -53,6 +53,7 @@ module Decidim
                 category: form.category,
                 title: form.title,
                 description: form.description,
+                excerpt: form.excerpt,
                 budget_amount: form.budget_amount,
                 selected_at: selected_at
               )

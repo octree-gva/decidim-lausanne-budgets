@@ -22,6 +22,7 @@ fr:
         decidim_category_id: Catégorie
         decidim_scope_id: Périmètre d'application
         description: Description
+        excerpt: Résumer
         proposal_ids: Propositions liées
         selected: Sélectionné pour l'implémentation
         title: Titre

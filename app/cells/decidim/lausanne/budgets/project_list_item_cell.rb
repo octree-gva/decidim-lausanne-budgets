@@ -25,6 +25,9 @@ module Decidim
           def resource_title
             translated_attribute model.title
           end
+          def resource_excerpt
+            translated_attribute model.excerpt
+          end
 
           def resource_added?
             current_order && current_order.projects.include?(model)

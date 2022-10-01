@@ -6,7 +6,7 @@ module Decidim
       # `current_component` param with a `Decidim::Component` in order to
       # find the projects.
       class ProjectSearch < ResourceSearch
-        text_search_fields :title, :description
+        text_search_fields :title, :description, :excerpt
 
         # Public: Initializes the service.
         # component     - A Decidim::Component to get the projects from.

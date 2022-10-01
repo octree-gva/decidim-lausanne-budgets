@@ -8,6 +8,7 @@ module Decidim
         delegate :voting_finished?, to: :controller
 
         property :title
+        property :excerpt
         alias budget model
 
         private

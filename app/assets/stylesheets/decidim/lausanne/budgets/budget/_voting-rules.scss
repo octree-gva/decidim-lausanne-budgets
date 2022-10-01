@@ -2,9 +2,11 @@
   .callout .button.primary {
     color: #fff;
     background-color: var(--primary);
+    &.hollow{ background-color: transparent; color: var(--primary);}
   }
   .callout .button.secondary {
     color: #fff;
     background-color: var(--secondary);
+    &.hollow{ background-color: transparent; color: var(--secondary);}
   }
 }

@@ -13,6 +13,7 @@ module Decidim
 
           translatable_attribute :title, String
           translatable_attribute :description, String
+          translatable_attribute :excerpt, String
 
           attribute :budget_amount, Integer
           attribute :decidim_scope_id, Integer
@@ -25,6 +26,7 @@ module Decidim
 
           validates :title, translatable_presence: true
           validates :description, translatable_presence: true
+          validates :excerpt, translatable_presence: true
           validates :budget_amount, presence: true, numericality: { greater_than: 0 }
 
           validates :category, presence: true, if: ->(form) { form.decidim_category_id.present? }

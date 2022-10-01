@@ -4,13 +4,12 @@
       <% if voted? && !voting_finished? %>
         <strong>
           <%= translated_attribute(title) %>
-        </strong>
+          </strong>
         <span class="button tiny success card--list__check card--list__check--disabled">
           <%= icon "check", class: "icon--small", role: "img" %>
         </span>
       <% else %>
         <%= translated_attribute(title) %>
-
         <% if progress? && !voting_finished? %>
           <span class="button tiny hollow secondary card--list__check card--list__check--disabled">
             <%= icon "bookmark", class: "icon--small", role: "img" %>
