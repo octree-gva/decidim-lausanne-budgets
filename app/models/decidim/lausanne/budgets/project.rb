@@ -40,14 +40,7 @@ module Decidim
           datetime: :created_at
         )
 
-        ransacker :title do
-          Arel.sql(%{("loz_budgets_projects"."title")::text})
-        end
-
-        ransacker :description do
-          Arel.sql(%{("loz_budgets_projects"."description")::text})
-        end
-
+ 
         def self.ordered_ids(ids)
           # Make sure each ID in the matching text has a "," character as their
           # delimiter. Otherwise e.g. ID 2 would match ID "26" in the original
