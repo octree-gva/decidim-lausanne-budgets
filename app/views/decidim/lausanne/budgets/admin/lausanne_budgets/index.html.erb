@@ -54,7 +54,7 @@
                 <% if allowed_to? :delete, :budget, budget: budget %>
                   <%= icon_link_to "circle-x", lausanne_budget_path(budget), t("actions.destroy", scope: "decidim.lausanne_budgets"), method: :delete, class: "action-icon--remove", data: { confirm: t("actions.confirm_destroy", scope: "decidim.lausanne_budgets") } %>
                 <% else %>
-                  <%= icon "circle-x", class: "action-icon action-icon--disabled", role: "img" %>
+                  <%= "circle-x" %>
                 <% end %>
               </td>
             </tr>

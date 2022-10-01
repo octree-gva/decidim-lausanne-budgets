@@ -1,4 +1,4 @@
-<%= decidim_form_for(@form, url: budget_proposals_import_path(budget), html: { class: "form import_proposals" }) do |f| %>
+<%= decidim_form_for(@form, url: lausanne_budget_proposals_import_path(lausanne_budget: budget), html: { class: "form import_proposals" }) do |f| %>
   <% if @form.origin_components.any? %>
     <div class="card">
       <div class="card-divider">

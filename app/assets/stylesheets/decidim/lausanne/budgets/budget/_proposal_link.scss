@@ -1,0 +1,37 @@
+.vote_link {
+  width: 100%;
+  display: flex; 
+  gap: 0.5rem;
+  padding: 30px;
+  background: var(--primary);
+  color: white;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 128px;
+  h3 {
+    font-weight: 900;
+  }
+  p {
+    font-size: 110%;
+    a {
+      text-decoration: underline;
+      color: white;
+      &:hover{
+        color: white;
+        opacity: 0.8;
+      }
+    }
+  }
+  .vote_link__text {
+    flex: 1;
+  }
+  .vote_link__action {
+    align-self: flex-end;
+    background: white;
+    color: var(--primary);
+    &:hover {
+      background: white;
+      color: var(--primary);
+      opacity: 0.8;
+    }
+  }
+}

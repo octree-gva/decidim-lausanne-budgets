@@ -6,7 +6,7 @@
         <%= t(".title") %>
       </div>
       <div class="flex--cc flex-gap--1">
-        <%= link_to t("actions.import", scope: "decidim.lausanne_budgets", name: t("models.project.name", scope: "decidim.lausanne_budgets.admin")), new_lausanne_budget_proposals_import_path(budget), class: "button tiny button--title" if allowed_to? :import_proposals, :project %>
+        <%= link_to t("actions.import", scope: "decidim.lausanne_budgets", name: t("models.project.name", scope: "decidim.lausanne_budgets.admin")), new_lausanne_budget_proposals_import_path(lausanne_budget: budget), class: "button tiny button--title" if allowed_to? :import_proposals, :project %>
         <% if allowed_to? :export, :budget %>
           <%= export_dropdown(current_component, budget.id) %>
         <% end %>

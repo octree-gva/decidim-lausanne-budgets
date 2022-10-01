@@ -20,7 +20,7 @@ module Decidim
             Admin::ImportProposalsToBudgets.call(@form) do
               on(:ok) do |projects|
                 flash[:notice] = I18n.t("proposals_imports.create.success", scope: "decidim.lausanne_budgets.admin", number: projects.length)
-                redirect_to lausanne_budget_projects_path(budget)
+                redirect_to lausanne_budget_projects_path(lausanne_budget: budget)
               end
 
               on(:invalid) do
