@@ -111,6 +111,11 @@ extra_admin_link(
       <% if @proposal.withdrawn? %>
         <div class="card">
           <div class="card__content">
+            <% if lausanne_project %>
+              <%= link_to resource_locator([lausanne_project.budget, lausanne_project]).url, class: "primary button expanded" do %>
+              <%= t("decidim.lausanne.budgets.linked_project.button") %>
+              <% end %>
+            <% end %>
             <% if current_settings.votes_enabled? %>
               <%= render partial: "votes_count", locals: { proposal: @proposal, from_proposals_list: false } %>
             <% end %>
@@ -119,6 +124,11 @@ extra_admin_link(
       <% else %>
         <div class="card">
           <div class="card__content">
+            <% if lausanne_project %>
+              <%= link_to resource_locator([lausanne_project.budget, lausanne_project]).url, class: "primary button expanded" do %>
+              <%= t("decidim.lausanne.budgets.linked_project.button") %>
+              <% end %>
+            <% end %>
             <% if lausanne_project %>
               <%= link_to resource_locator([lausanne_project.budget, lausanne_project]).url, class: "primary button expanded" do %>
               <%= t("decidim.lausanne.budgets.linked_project.button") %>
