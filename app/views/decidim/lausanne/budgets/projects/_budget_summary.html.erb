@@ -27,14 +27,8 @@
         <%= link_to(
             t("decidim.lausanne.budgets.projects.banner.confirmation", count: current_order.total_projects),
             lausanne_budget_order_path(current_user_record.budget),
-            method: :get,
             target: "_blank",
             style: "margin-bottom: 0",
-            data: {
-              disable: true,
-              budget: current_user_record.budget,
-              "redirect-url": lausanne_budget_path(current_user_record.budget)
-            },
             class: "primary small"
           ) %>
           </div>
