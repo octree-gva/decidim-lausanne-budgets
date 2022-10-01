@@ -6,13 +6,16 @@ $block: "votation_banner";
   width: 100%;
   z-index: 999;
   background: #eee;
-  border-top: 2px solid #2c2930;
   right: 0;
   left: 0;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
   gap: 0.5rem;
+  -webkit-box-shadow: 0px -2px 6px 0px rgba(94, 111, 101, 0.6);
+  -moz-box-shadow: 0px -2px 6px 0px rgba(94, 111, 101,0.6);
+  box-shadow: 0px -2px 6px 0px rgba(94, 111, 101,0.6);
+
   @include breakpoint(medium) {
     flex-direction: row;
     gap: 0;
@@ -20,8 +23,9 @@ $block: "votation_banner";
 
 }
 .#{$block}--checked_out {
-  border-top-color: var(--success);
-  background: #ddf7e7;
+  border-top-color: transparent;
+  border-top-width: 0;
+  background: rgb(222, 247, 232);
 }
 .#{$block}__header {
   flex: 2;

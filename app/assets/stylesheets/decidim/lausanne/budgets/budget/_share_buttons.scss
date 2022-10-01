@@ -1,3 +1,15 @@
 .shares .social-share-button .ssb-icon.ssb-whatsapp_app {
   display: inline-block;
 }
+
+$size: 26px;
+.shares {
+  text-align: center;
+}
+.shares .social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}

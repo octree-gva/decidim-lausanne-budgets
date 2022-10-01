@@ -1,4 +1,5 @@
 <%= render partial: "decidim/lausanne/budgets/projects/votation_banner" %>
+<%= javascript_include_tag "decidim/social_share" %>
 
 <% add_decidim_meta_tags(
   title: translated_attribute(project.title),
@@ -50,12 +51,22 @@ edit_link(
         <%= render partial: "decidim/shared/follow_button", locals: { followable: project, large: false  } %>
       </div>
     </div>
+    <div class="shares">
+      <%= social_share_button_tag(
+        "#{translated_attribute(project.title)}: les votes sont ouverts!",
+        url: lausanne_budget_project_url(project.budget, project),
+        desc: decidim_sanitize(translated_attribute project.description),
+        allow_sites: %w(whatsapp_app facebook twitter email)
+      ) %>
+    </div>
+
     <%= resource_reference(project) %>
   </div>
   <div class="columns mediumlarge-8 mediumlarge-pull-4">
     <div class="section">
       <%= cell("decidim/lausanne/budgets/project_selected_status", project, as_label: true) %>
       <%= decidim_sanitize translated_attribute project.description %>
+
       <%= cell "decidim/lausanne/budgets/project_tags", project, context: { extra_classes: ["tags--project"] } %>
     </div>
     <%= linked_resources_for project, :proposals, "included_proposals" %>
