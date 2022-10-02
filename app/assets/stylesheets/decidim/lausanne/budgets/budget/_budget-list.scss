@@ -129,7 +129,9 @@
   &__title {
     font-size: $global-font-size;
   }
-
+  &__excerpt{
+    font-weight: 300;
+  }
   &__number {
     @include breakpoint(medium down) {
       font-size: 1rem;
