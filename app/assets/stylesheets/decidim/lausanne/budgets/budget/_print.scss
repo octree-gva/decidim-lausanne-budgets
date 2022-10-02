@@ -7,7 +7,11 @@ body.lausanne_budget_print {
       font-family: Open Sans, sans-serif;
 
   h1{
-    margin-top: 64px;
+    margin-top: 32px;
+    font-size: 120%;
+  }
+  p, strong {
+    font-size: 14px;
   }
   a, button {
     color: var(--primary);
@@ -31,7 +35,7 @@ body.lausanne_budget_print {
     min-width: 280px;
   }
   .vote {
-    margin-top: 64px;
+    margin-top: 48px;
     width: 99%;
     td {
       padding: 0.5em 1em;
@@ -57,5 +61,10 @@ body.lausanne_budget_print {
   .shares{
     text-align: center;
     margin-top: 64px;
+  }
+  @media print {
+    .shares, .actions{
+      display: none;
+    }
   }
 }
