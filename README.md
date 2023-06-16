@@ -74,9 +74,22 @@ If you haven't done it already, [install](https://docs.docker.com/get-docker/) d
 ```
 ## Local development
 
-The [Rakefile](Rakefile) is shipped with a
-`development_app` using `docker-compose` to run a database.
+Run a postgres database
+```
+docker-compose up -d
+cp .env.sample .env.local && source .env.local
+```
 If you haven't done it already, [install](https://docs.docker.com/get-docker/) docker](https://docs.docker.com/get-docker/).
+
+Run if you haven't already:
+```bash
+bundle
+```
+
+And then
+```bash
+bundle exec rake development_app
+```
 
 ```bash
     bundle exec rake development_app

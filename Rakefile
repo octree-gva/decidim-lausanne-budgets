@@ -18,8 +18,8 @@ def prepare_database(app_path)
   # Remove previous existing db, and recreate one.
   disable_docker_compose = ENV.fetch("DISABLED_DOCKER_COMPOSE", "false") == "true"
   unless disable_docker_compose
-    system("docker-compose -f docker-compose.yml down -v")
-    system("docker-compose -f docker-compose.yml up -d --remove-orphans")
+    system("sudo docker-compose -f docker-compose.yml down -v")
+    system("sudo docker-compose -f docker-compose.yml up -d --remove-orphans")
   end
   databaseYml = {
     "development" => {
@@ -71,23 +71,41 @@ task :test_app do
   end
 end
 
+desc "Prepare for development"
+task :prepare_dev do
+  databaseYml = {
+    "development" => {
+      "adapter" => "postgresql",
+      "encoding" => "unicode",
+      "host" => ENV.fetch("DATABASE_HOST", "localhost"),
+      "port" => ENV.fetch("DATABASE_PORT", "5432").to_i,
+      "username" => ENV.fetch("DATABASE_USERNAME", "decidim"),
+      "password" => ENV.fetch("DATABASE_PASSWORD", "TEST-insecure-password"),
+      "database" => "#{base_app_name}_development_app_development",
+    }
+  }
+  config_file = File.expand_path("development_app/config/database.yml", __dir__)
+  File.open(config_file, "w") { |f| YAML.dump(databaseYml, f) }
+end
+
 desc "Generates a development app"
 task :development_app do
-  ENV["RAILS_ENV"] = "development"
   Bundler.with_original_env do
     generate_decidim_app(
       "development_app",
-        "--app_name",
-        "decidim_dev",
-        "--path",
-        "..",
-        "--skip_spring",
-        "--demo",
-        "--force_ssl",
-        "false",
-        "--locales",
-        "en,fr,es"
+      "--app_name",
+      "#{base_app_name}_development_app",
+      "--path",
+      "..",
+      "--recreate_db",
+      "--demo"
     )
-    prepare_database("development_app")
   end
+
+  system("bin/rails generate doorkeeper:install")
+  system("bin/rails generate doorkeeper:migration")
+
+  install_module("development_app")
+  Rake::Task["prepare_dev"].invoke
+  seed_db("development_app")
 end

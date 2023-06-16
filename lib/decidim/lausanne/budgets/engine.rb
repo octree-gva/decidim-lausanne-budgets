@@ -29,12 +29,13 @@ module Decidim
         end
 
         initializer "lausanne_budgets.middlewares" do |app|
-          app.config.middleware.insert_before Decidim::CurrentOrganization, Decidim::Lausanne::Budgets::CurrentUserRecordMiddleware
+          app.config.middleware.insert_before Decidim::Middleware::CurrentOrganization, Decidim::Lausanne::Budgets::CurrentUserRecordMiddleware
         end
 
-        initializer "lausanne_budgets.assets" do |app|
-          app.config.assets.precompile += %w(decidim_lausanne_budgets_manifest.js)
+        initializer "decidim_lausanne_budgets.webpacker.assets_path" do
+          Decidim.register_assets_path File.expand_path("#{Decidim::Lausanne::Budgets::Engine.root}/app/packs")
         end
+  
 
         initializer "lausanne_budgets.add_cells_view_paths" do
           Cell::ViewModel.view_paths << File.expand_path("#{Decidim::Lausanne::Budgets::Engine.root}/app/cells")

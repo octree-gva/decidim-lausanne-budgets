@@ -1,13 +1,13 @@
 services:
   local_postgres:
-    image: postgres:12
+    image: postgres:14
     volumes:
       - pg-data-test:/var/lib/postgresql/data
       - .docker/db-init.sh:/docker-entrypoint-initdb.d/db_init.sh
     environment:
       - POSTGRES_PASSWORD=TEST-insecure-password
       - POSTGRES_USER=decidim
-      - POSTGRES_MULTIPLE_DATABASES=decidim_dev,decidim_test
+      - POSTGRES_MULTIPLE_DATABASES=decidim_lausanne_budget_deve
     ports:
       - 5432:5432
 
