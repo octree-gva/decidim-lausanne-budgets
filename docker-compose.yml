@@ -7,7 +7,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=TEST-insecure-password
       - POSTGRES_USER=decidim
-      - POSTGRES_MULTIPLE_DATABASES=decidim_lausanne_budget_deve
+      - POSTGRES_DB=decidim-lausanne-budgets_development_app_development
     ports:
       - 5432:5432
 
