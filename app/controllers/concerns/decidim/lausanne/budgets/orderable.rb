@@ -18,6 +18,7 @@ module Decidim
             def available_orders
               @available_orders ||= begin
                 available_orders = []
+                available_orders << "asc" 
                 available_orders << "random" if voting_open? || !votes_are_visible?
                 available_orders << "most_voted" if votes_are_visible?
                 available_orders += %w(highest_cost lowest_cost)
