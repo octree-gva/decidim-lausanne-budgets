@@ -40,7 +40,7 @@ module Decidim
               when "lowest_cost"
                 projects.order(budget_amount: :asc)
             when "asc"
-              ids = projects.sort_by {|p| p.title[current_organization.default_locale]}.map(&:id)
+              ids = projects.sort_by {|p| p.title.values.first}.map(&:id)
               projects.ordered_ids(ids)
             when "random"
                 projects.order_randomly(random_seed)
