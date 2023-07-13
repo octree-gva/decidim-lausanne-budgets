@@ -33,7 +33,7 @@ module Decidim
           private
 
             def budget
-              @budget ||= LausanneBudget.where(component: current_component).find_by(id: params[:budget_id])
+              @budget ||= LausanneBudget.where(component: current_component).find_by(id: params[:lausanne_budget])
             end
         end
       end
