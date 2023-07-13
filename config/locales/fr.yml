@@ -44,6 +44,11 @@ fr:
             name: Budget
           project:
             name: Projet
+        lausanne_budgets:
+          create:
+            success: "Budget créé"
+          update:
+            success: "Budget mis à jour"
       actions:
         attachment_collections: Dossiers
         attachments: Documents liés
@@ -281,6 +286,7 @@ fr:
             label: Trier les projets par
             lowest_cost: Prix croissant
             most_voted: Les plus votés
+            asc: Nom de projet
             random: Ordre aléatoire
             selected: Sélectionné
           project:

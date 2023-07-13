@@ -119,7 +119,7 @@ Decidim.register_component(:lausanne_budgets) do |component|
       settings: {
         landing_page_content: landing_page_content,
         more_information_modal: Decidim::Faker::Localized.paragraph(sentence_count: 4),
-        workflow: %w(one random all).sample
+        workflow: %w(one random asc all).sample
       }
     )
 

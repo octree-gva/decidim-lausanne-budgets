@@ -11,6 +11,7 @@ module Decidim
             enforce_permission_to :import_proposals, :projects
 
             @form = form(Admin::ProjectImportProposalsForm).instance
+            @form.context.budget = budget
           end
 
           def create
@@ -33,7 +34,7 @@ module Decidim
           private
 
             def budget
-              @budget ||= LausanneBudget.where(component: current_component).find_by(id: params[:budget_id])
+              @budget ||= LausanneBudget.where(component: current_component).find_by(id: params[:lausanne_budget])
             end
         end
       end

@@ -46,7 +46,10 @@ module Decidim
                 else
                   projects
                 end
-              when "random"
+            when "asc"
+              ids = projects.sort_by(&:translated_title).map(&:id)
+              projects.ordered_ids(ids)
+            when "random"
                 projects.order_randomly(random_seed)
               else
                 projects
