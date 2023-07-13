@@ -19,7 +19,6 @@ module Decidim
               @available_orders ||= begin
                 available_orders = []
                 available_orders << "asc" 
-                available_orders << "random" if voting_open? || !votes_are_visible?
                 available_orders << "most_voted" if votes_are_visible?
                 available_orders += %w(highest_cost lowest_cost)
                 available_orders
@@ -40,15 +39,8 @@ module Decidim
                 projects.order(budget_amount: :desc)
               when "lowest_cost"
                 projects.order(budget_amount: :asc)
-              when "most_voted"
-                if votes_are_visible?
-                  ids = projects.sort_by(&:confirmed_orders_count).map(&:id).reverse
-                  projects.ordered_ids(ids)
-                else
-                  projects
-                end
             when "asc"
-              ids = projects.sort_by(&:translated_title).map(&:id)
+              ids = projects.sort_by {|p| p.title[current_organization.default_locale]}.map(&:id)
               projects.ordered_ids(ids)
             when "random"
                 projects.order_randomly(random_seed)
