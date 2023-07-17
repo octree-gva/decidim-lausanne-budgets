@@ -8,7 +8,7 @@ require_relative "#{base_path}lib/decidim/lausanne/budgets/version"
 
 DECIDIM_VERSION = Decidim::Lausanne::Budgets.version
 
-gem "decidim", "~> 0.26.5"
+gem "decidim", "~> 0.26.4"
 gem "decidim-lausanne-budgets", path: base_path
 gem "kaminari", "~> 1.2", ">= 1.2.1"
 gem "searchlight", "~> 4.1"
@@ -29,5 +29,5 @@ group :development, :test do
 end
 
 group :development do
-  gem "decidim-dev", "~> 0.26.5"
+  gem "decidim-dev", "~> 0.26.4"
 end
