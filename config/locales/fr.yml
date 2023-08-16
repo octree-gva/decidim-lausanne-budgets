@@ -194,7 +194,7 @@ fr:
             terminate_session: |
               J'ai terminé, fermer ma session
             checked_out: Vote terminé
-            pending_order: Vote en cours: 
+            pending_order: "Vote en cours: "
             finalize: Finaliser le vote
             user_data_help: |
               Saisissez vos informations personnelles pour pouvoir voter — même sans compte
