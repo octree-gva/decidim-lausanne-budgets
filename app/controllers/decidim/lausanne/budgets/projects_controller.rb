@@ -9,7 +9,7 @@ module Decidim
         include NeedsCurrentOrder
         include Decidim::Lausanne::Budgets::Orderable
 
-        helper_method :projects, :project, :budget, :set_decidim_meta_tags
+        helper_method :projects, :project, :budget, :reset_decidim_meta_title
 
         def index
           set_cache_headers
