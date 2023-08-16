@@ -9,23 +9,24 @@ module Decidim
         include NeedsCurrentOrder
         include Decidim::Lausanne::Budgets::Orderable
 
-        helper_method :projects, :project, :budget
+        helper_method :projects, :project, :budget, :set_decidim_meta_tags
 
         def index
           set_cache_headers
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
         end
-
+        
         def show
-
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
           raise ActionController::RoutingError, "Not Found" unless project
         end
 
         private
-
+          def reset_decidim_meta_title
+            @decidim_page_title = []
+          end
           def budget
             @budget ||= LausanneBudget.where(component: current_component).includes(:projects).find_by(id: params[:lausanne_budget_id])
           end
