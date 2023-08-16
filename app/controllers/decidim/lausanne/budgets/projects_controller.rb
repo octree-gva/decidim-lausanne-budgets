@@ -9,8 +9,13 @@ module Decidim
         include NeedsCurrentOrder
         include Decidim::Lausanne::Budgets::Orderable
 
-        helper_method :projects, :project, :budget
+        helper_method :projects, :project, :budget, :add_decidim_page_title
 
+        def add_decidim_page_title(title)
+          @decidim_page_title ||= []
+          return @decidim_page_title if title.blank? || !@decidim_page_title.empty?
+          @decidim_page_title << title
+        end
         def index
           set_cache_headers
           @user_record_form = UserRecordForm.from_model(current_user_record)
