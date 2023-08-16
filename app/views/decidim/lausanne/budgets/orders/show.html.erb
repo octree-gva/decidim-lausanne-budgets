@@ -63,7 +63,6 @@
 <div class="shares">
 <%= social_share_button_tag(
   "J’ai voté pour les projets du #{translated_attribute(current_order.component.participatory_space.title).strip}", 
-  'data-facebook-title': "#{translated_attribute(project.title).strip}: les votes sont ouverts!",
   :url => lausanne_budget_url(current_order.budget),
   desc: "J’ai voté pour les projets du #{translated_attribute(current_order.component.participatory_space.title).strip}",
   allow_sites: %w(whatsapp_app facebook twitter email)
