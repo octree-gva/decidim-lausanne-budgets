@@ -18,6 +18,7 @@ module Decidim
         end
 
         def show
+
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
           raise ActionController::RoutingError, "Not Found" unless project

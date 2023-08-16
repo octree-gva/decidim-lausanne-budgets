@@ -1,10 +1,13 @@
 <%= render partial: "decidim/lausanne/budgets/projects/votation_banner" %>
 <%= javascript_include_tag "decidim/social_share" %>
 
-<% add_decidim_meta_tags(
-  title: translated_attribute(project.title).strip + ": Les votes sont ouverts.",
-  description: translated_attribute(project.title).strip + ": Les votes sont ouverts."
-) %>
+<% 
+@decidim_page_title = []
+add_decidim_meta_tags(
+  title: translated_attribute(project.title).strip + ": Les votes sont ouverts!",
+  description: translated_attribute(project.title).strip + ": Les votes sont ouverts!"
+) 
+%>
 
 <%
 edit_link(
