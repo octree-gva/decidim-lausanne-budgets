@@ -55,6 +55,7 @@ edit_link(
     <div class="shares">
       <%= social_share_button_tag(
         "#{translated_attribute(project.title).strip}: les votes sont ouverts!",
+        'data-facebook-title': "#{translated_attribute(project.title).strip}: les votes sont ouverts!",
         url: lausanne_budget_project_url(project.budget, project),
         desc: "#{translated_attribute(project.title).strip}: les votes sont ouverts!",
         allow_sites: %w(whatsapp_app facebook twitter email)
