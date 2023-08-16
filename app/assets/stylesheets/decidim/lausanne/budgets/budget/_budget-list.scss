@@ -171,7 +171,7 @@
     display: block;
     width: 28.8px;
     height: 28.8px;
-    background: white;
+    background: #f4f4f4;
     position:absolute;
     top: -1px;
     left: -1px;
@@ -181,5 +181,10 @@
     background-image: asset_url("decidim/lausanne/budgets/lausanneparticipe.gif");
     background-repeat: no-repeat;
     background-position: center;
+
   }
+  button[disabled].success.budget-list__action:after{
+    background: var(--success);
+  }
+
 }
