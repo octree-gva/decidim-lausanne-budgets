@@ -40,7 +40,6 @@ module Decidim
           datetime: :created_at
         )
 
- 
         def self.ordered_ids(ids)
           # Make sure each ID in the matching text has a "," character as their
           # delimiter. Otherwise e.g. ID 2 would match ID "26" in the original
@@ -53,6 +52,10 @@ module Decidim
           Decidim::Lausanne::Budgets::AdminLog::ProjectPresenter
         end
 
+        def translated_title
+          @translated_title ||= translated_attribute title
+        end
+        
         def polymorphic_resource_path(url_params)
           ::Decidim::ResourceLocatorPresenter.new([budget, self]).path(url_params)
         end
@@ -107,6 +110,7 @@ module Decidim
         def attachment_context
           :admin
         end
+
       end
     end
   end
