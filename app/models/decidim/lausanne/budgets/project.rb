@@ -19,6 +19,7 @@ module Decidim
         include Decidim::Randomable
         include Decidim::Searchable
         include Decidim::TranslatableResource
+        include Decidim::TranslationsHelper
 
         self.table_name = :loz_budgets_projects
         translatable_fields :title, :description
@@ -55,7 +56,7 @@ module Decidim
         def translated_title
           @translated_title ||= translated_attribute title
         end
-        
+
         def polymorphic_resource_path(url_params)
           ::Decidim::ResourceLocatorPresenter.new([budget, self]).path(url_params)
         end
