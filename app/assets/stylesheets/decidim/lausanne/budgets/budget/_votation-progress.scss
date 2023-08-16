@@ -51,17 +51,19 @@ $block: "votation_banner";
   gap: 1rem;
 }
 .#{$block}__actions {
-  display: flex;
-  flex: 1;
-  align-items: center;
   margin-top: 1rem;
-  @include breakpoint(medium) {
+  .#{$block}__actions-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+  @include breakpoint(large) {
     margin-top: 0;
-    flex: 0;
     transform: translateX(-100%);
     display: block;
     float: right;
     .#{$block}__actions-container {
+      flex: 0;
       display: block;
       width: 200%;
       display: flex;
