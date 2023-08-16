@@ -62,9 +62,9 @@
 </div>
 <div class="shares">
 <%= social_share_button_tag(
-  "J'ai voté pour le #{translated_attribute(current_order.component.participatory_space.title)}", 
+  "J’ai voté pour les projets du #{translated_attribute(current_order.component.participatory_space.title).strip}", 
   :url => lausanne_budget_url(current_order.budget),
-  desc: translated_attribute(current_order.component.participatory_space.title),
+  desc: "J’ai voté pour les projets du #{translated_attribute(current_order.component.participatory_space.title).strip}",
   allow_sites: %w(whatsapp_app facebook twitter email)
   ) %>
   </div>
