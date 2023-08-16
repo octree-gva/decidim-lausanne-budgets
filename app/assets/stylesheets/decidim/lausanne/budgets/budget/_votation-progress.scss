@@ -5,7 +5,7 @@ $block: "votation_banner";
   bottom: 0;
   width: 100%;
   z-index: 999;
-  background: #eee;
+  background: white;
   right: 0;
   left: 0;
   display: flex;
@@ -50,14 +50,17 @@ $block: "votation_banner";
 }
 .#{$block}__actions {
   display: flex;
+  flex: 1;
   align-items: center;
   margin-top: 1rem;
   @include breakpoint(medium) {
     margin-top: 0;
-    align-items: flex-end;
+    flex: 0;
+    transform: translateX(-100%);
+    display: block;
+    float: right;
   }
   justify-content: center;
-  flex: 1;
   gap: 1rem;
   button {
     margin: 0;
@@ -65,11 +68,12 @@ $block: "votation_banner";
   button.primary, button.primary.small,
   button.primary:focus, button.primary.small:focus {
     background: var(--primary);
+    color: white;
     font-weight: 600;
   }
 }
 .#{$block}__helptext {
-  opacity: 0.8;
-  display: inline-block;
+  opacity: 0.9;
+  display: block;
   padding-left: 0.5rem;
 }

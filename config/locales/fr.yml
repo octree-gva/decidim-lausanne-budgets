@@ -135,7 +135,7 @@ fr:
             delete: "%{user_name} a supprimé le projet %{resource_name} dans l'espace %{space_name}"
             update: "%{user_name} a mis à jour le projet %{resource_name} dans l'espace %{space_name}"
         budget:
-          view: Voir tous les projets
+          view: Retour aux projets
         budget_information_modal:
           back_to: Retour à %{component_name}
           close_modal: Fermer la fenêtre de dialogue
@@ -194,14 +194,14 @@ fr:
             terminate_session: |
               J'ai terminé, fermer ma session
             checked_out: Vote terminé
-            pending_order: Vote en cours
+            pending_order: Vote en cours: 
             finalize: Finaliser le vote
             user_data_help: |
               Saisissez vos informations personnelles pour pouvoir voter — même sans compte
             user_data_action: Commencer à voter
             cancel_order:
-              one: Retirer son vote
-              other: Retirer ses %{count} votes
+              one: Retirer mon vote
+              other: Retirer mes votes
             confirmation: "Confirmation"
             checked_out:
               description: Vous avez déjà voté pour le budget. Si vous avez changé d'avis, vous pouvez %{cancel_link}.
@@ -210,8 +210,8 @@ fr:
               description: A quels projets pensez-vous que nous devrions allouer un budget ? Sélectionnez au moins %{minimum_number} projets que vous soutenez et votez selon vos préférences pour définir le budget.
               instruction:
                 zero: "Vous pouvez finaliser votre vote"
-                one: "Un vote restant pour finaliser votre vote"
-                other: "%{count} projets restant pour finaliser votre vote"
+                one: "1 projet restant"
+                other: "%{count} projets restants"
             projects_rule:
               description: A quels projets pensez-vous que nous devrions allouer un budget ? Sélectionnez entre %{minimum_number} et %{maximum_number} projets que vous soutenez et votez selon vos préférences pour définir le budget.
               instruction: "<li>Sélectionnez entre %{minimum_number} et %{maximum_number} projets que vous souhaitez et votez selon vos préférences pour définir le budget.</li>"

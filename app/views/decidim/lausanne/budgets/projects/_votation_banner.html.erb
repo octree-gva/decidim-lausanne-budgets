@@ -30,9 +30,8 @@
   <% if user_record_submitted? %>
     <div class="votation_banner__header">
       <h3 class="votation_banner__title">
-        <%= t("decidim.lausanne.budgets.projects.banner.pending_order") %>
-        <div class="votation_banner__helptext">
-          <%= current_rule_explanation("banner") %>
+      <div class="votation_banner__helptext">
+          <%= t("decidim.lausanne.budgets.projects.banner.pending_order") %> <%= current_rule_explanation("banner") %>
         </div>
       </h3>
     </div>
