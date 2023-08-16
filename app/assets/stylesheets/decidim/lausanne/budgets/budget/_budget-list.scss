@@ -181,10 +181,11 @@
     background-image: asset_url("decidim/lausanne/budgets/lausanneparticipe.gif");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
 
   }
   button[disabled].success.budget-list__action:after{
-    background: var(--success);
+    background: #ddf7e7;
   }
 
 }
