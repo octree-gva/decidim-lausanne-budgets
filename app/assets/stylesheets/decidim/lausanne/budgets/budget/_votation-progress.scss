@@ -59,7 +59,7 @@ $block: "votation_banner";
   }
   @include breakpoint(large) {
     margin-top: 0;
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     display: block;
     float: right;
     .#{$block}__actions-container {
