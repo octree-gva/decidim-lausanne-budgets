@@ -12,17 +12,19 @@ module Decidim
         helper_method :projects, :project, :budget, :add_decidim_page_title
 
         def add_decidim_page_title(title)
-          @decidim_page_title ||= []
-          return @decidim_page_title if title.blank? || !@decidim_page_title.empty?
-          @decidim_page_title << title
+
         end
+        
         def index
           set_cache_headers
+          @decidim_page_title = "Les votes sont ouverts!"
+
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
         end
         
         def show
+          @decidim_page_title = translated_attribute(project.title).strip + ": Les votes sont ouverts!"
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
           raise ActionController::RoutingError, "Not Found" unless project
