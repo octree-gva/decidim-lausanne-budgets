@@ -6,36 +6,7 @@
     </h3>
   </div>
   <div class="votation_banner__actions">
-    <%= button_to(
-      t("decidim.lausanne.budgets.projects.banner.cancel_order", count: current_order.total_projects),
-      lausanne_budget_order_path(current_user_record.budget),
-      method: :delete,
-      data: {
-        disable: true,
-        budget: current_user_record.budget,
-        "redirect-url": lausanne_budget_path(current_user_record.budget)
-      },
-      disabled: current_order.total_projects == 0,
-      class: "button secondary hollow small"
-    ) %>
-    <%= link_to(
-      t("decidim.lausanne.budgets.projects.banner.confirmation", count: current_order.total_projects),
-      lausanne_budget_order_path(current_user_record.budget),
-      target: "_blank",
-      style: "margin-bottom: 0",
-      class: "button small"
-    ) %>
-  </div>
-<% else %>
-  <% if user_record_submitted? %>
-    <div class="votation_banner__header">
-      <h3 class="votation_banner__title">
-      <div class="votation_banner__helptext">
-          <%= t("decidim.lausanne.budgets.projects.banner.pending_order") %> <%= current_rule_explanation("banner") %>
-        </div>
-      </h3>
-    </div>
-    <div class="votation_banner__actions">
+    <div class="votation_banner__actions-container">
       <%= button_to(
         t("decidim.lausanne.budgets.projects.banner.cancel_order", count: current_order.total_projects),
         lausanne_budget_order_path(current_user_record.budget),
@@ -48,9 +19,42 @@
         disabled: current_order.total_projects == 0,
         class: "button secondary hollow small"
       ) %>
-      <button data-toggle="budget-confirm" class="button primary small" <%= budget_confirm_disabled_attr %>>
-        <%= t("decidim.lausanne.budgets.projects.banner.finalize") %>
-      </button>    
+      <%= link_to(
+        t("decidim.lausanne.budgets.projects.banner.confirmation", count: current_order.total_projects),
+        lausanne_budget_order_path(current_user_record.budget),
+        target: "_blank",
+        style: "margin-bottom: 0",
+        class: "button small"
+      ) %>
+    </div>
+  </div>
+<% else %>
+  <% if user_record_submitted? %>
+    <div class="votation_banner__header">
+      <h3 class="votation_banner__title">
+      <div class="votation_banner__helptext">
+          <%= t("decidim.lausanne.budgets.projects.banner.pending_order") %> <%= current_rule_explanation("banner") %>
+        </div>
+      </h3>
+    </div>
+    <div class="votation_banner__actions">
+      <div class="votation_banner__actions-container">
+        <%= button_to(
+          t("decidim.lausanne.budgets.projects.banner.cancel_order", count: current_order.total_projects),
+          lausanne_budget_order_path(current_user_record.budget),
+          method: :delete,
+          data: {
+            disable: true,
+            budget: current_user_record.budget,
+            "redirect-url": lausanne_budget_path(current_user_record.budget)
+          },
+          disabled: current_order.total_projects == 0,
+          class: "button secondary hollow small"
+        ) %>
+        <button data-toggle="budget-confirm" class="button primary small" <%= budget_confirm_disabled_attr %>>
+          <%= t("decidim.lausanne.budgets.projects.banner.finalize") %>
+        </button>
+      </div>
     </div>
     <% else %>
     <div class="votation_banner__header">
@@ -61,9 +65,11 @@
       </h3>
     </div>
     <div class="votation_banner__actions">
-      <button class="button primary small" data-toggle="userRecord">
-        <%= t("decidim.lausanne.budgets.projects.banner.user_data_action") %>
-      </button>    
+      <div class="votation_banner__actions-container">
+        <button class="button primary small" data-toggle="userRecord">
+          <%= t("decidim.lausanne.budgets.projects.banner.user_data_action") %>
+        </button>   
+      </div> 
     </div>
     <% end %>
 <% end %>
