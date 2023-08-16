@@ -2,7 +2,7 @@
 <%= javascript_include_tag "decidim/social_share" %>
 
 <% 
-reset_decidim_meta_title
+reset_decidim_meta_title()
 set_decidim_meta_tags(
   title: translated_attribute(project.title).strip + ": Les votes sont ouverts!",
   description: translated_attribute(project.title).strip + ": Les votes sont ouverts!"

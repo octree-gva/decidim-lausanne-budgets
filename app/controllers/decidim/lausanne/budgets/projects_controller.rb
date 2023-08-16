@@ -9,7 +9,7 @@ module Decidim
         include NeedsCurrentOrder
         include Decidim::Lausanne::Budgets::Orderable
 
-        helper_method :projects, :project, :budget, :reset_decidim_meta_title
+        helper_method :projects, :project, :budget
 
         def index
           set_cache_headers
@@ -24,9 +24,8 @@ module Decidim
         end
 
         private
-          def reset_decidim_meta_title
-            @decidim_page_title = []
-          end
+
+
           def budget
             @budget ||= LausanneBudget.where(component: current_component).includes(:projects).find_by(id: params[:lausanne_budget_id])
           end

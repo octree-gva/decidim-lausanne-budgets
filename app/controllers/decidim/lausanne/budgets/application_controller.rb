@@ -9,7 +9,11 @@ module Decidim
       # Note that it inherits from `Decidim::Components::BaseController`, which
       # override its layout and provide all kinds of useful methods.
       class ApplicationController < Decidim::Components::BaseController
-        helper_method :current_workflow, :voting_finished?, :voting_open?, :current_user_record
+        helper_method :current_workflow, :voting_finished?, :voting_open?, :current_user_record, :reset_decidim_meta_title
+        
+        def reset_decidim_meta_title
+          @decidim_page_title = []
+        end
 
         def current_workflow
           @current_workflow ||= Decidim::Lausanne::Budgets.workflows[workflow_name].new(current_component, current_user)
