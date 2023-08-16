@@ -7,6 +7,7 @@ module Decidim
       class ProjectsController < Decidim::Lausanne::Budgets::ApplicationController
         include FilterResource
         include NeedsCurrentOrder
+        include Decidim::TranslationsHelper
         include Decidim::Lausanne::Budgets::Orderable
 
         helper_method :projects, :project, :budget, :add_decidim_page_title
@@ -17,7 +18,7 @@ module Decidim
         
         def index
           set_cache_headers
-          @decidim_page_title =  ["Les votes sont ouverts!"]
+          @decidim_page_title =  [translated_attribute(current_order.component.participatory_space.title).strip + ": Les votes sont ouverts!"]
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
         end
