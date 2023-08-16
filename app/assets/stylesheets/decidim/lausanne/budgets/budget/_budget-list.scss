@@ -86,6 +86,8 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    
   }
 
   &__data__icon {
@@ -148,6 +150,7 @@
   }
 
   &__action {
+    position: relative;
     margin-bottom: 0;
     border-radius: 50%;
     align-self: center;
@@ -161,6 +164,17 @@
 
     &--disabled {
       pointer-events: none;
+    }
+    &[disabled]:after {
+      display: block;
+      width: 28.8px;
+      height: 28.8px;
+      background: white;
+      position:absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
   }
 }

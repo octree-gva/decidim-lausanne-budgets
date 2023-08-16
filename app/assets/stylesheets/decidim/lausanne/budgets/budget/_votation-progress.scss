@@ -76,10 +76,17 @@ $block: "votation_banner";
     margin: 0;
   }
   button.primary, button.primary.small,
-  button.primary:focus, button.primary.small:focus {
-    background: var(--primary);
-    color: white;
+  button.primary[disabled], button.primary.small[disabled] {
+    &:focus, &, &:hover {
+      color: white;
+      background: var(--primary);
+    }
     font-weight: 600;
+  }
+  button.primary[disabled], button.primary.small[disabled] {
+    &, &:focus, &:hover{
+      opacity: 0.25;
+    }
   }
 }
 .#{$block}__helptext {
