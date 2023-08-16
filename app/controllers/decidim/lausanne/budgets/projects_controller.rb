@@ -17,14 +17,13 @@ module Decidim
         
         def index
           set_cache_headers
-          @decidim_page_title = "Les votes sont ouverts!"
-
+          @decidim_page_title =  ["Les votes sont ouverts!"]
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
         end
         
         def show
-          @decidim_page_title = project.translated_title.strip + ": Les votes sont ouverts!"
+          @decidim_page_title = [project.translated_title.strip + ": Les votes sont ouverts!"]
           @user_record_form = UserRecordForm.from_model(current_user_record)
           raise ActionController::RoutingError, "Not Found" unless budget
           raise ActionController::RoutingError, "Not Found" unless project
