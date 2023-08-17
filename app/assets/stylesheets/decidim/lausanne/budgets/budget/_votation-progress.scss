@@ -90,8 +90,10 @@ $block: "votation_banner";
   }
 }
 .#{$block}__helptext {
-  opacity: 0.9;
   display: block;
   padding-left: 0.5rem;
   text-align:center;
+  opacity: 1;
+  color: var(--primary);
+  font-weight: bold;
 }
