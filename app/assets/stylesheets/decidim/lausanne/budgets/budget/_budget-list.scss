@@ -170,6 +170,8 @@
   button[disabled].budget-list__action{
     opacity: 1 !important;
     border-color: transparent;
+    background-color: transparent;
+    
     svg {visibility: hidden;}
     &:after {
       display: block;
