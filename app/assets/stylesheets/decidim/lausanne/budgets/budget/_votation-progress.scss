@@ -62,6 +62,7 @@ $block: "votation_banner";
     display: block;
     position: absolute;
     right: 3rem;
+    top: 12px;
     .#{$block}__actions-container {
       flex: 0;
       display: block;
