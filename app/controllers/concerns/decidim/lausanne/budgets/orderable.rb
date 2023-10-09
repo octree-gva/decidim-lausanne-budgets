@@ -40,7 +40,7 @@ module Decidim
               when "lowest_cost"
                 projects.order(budget_amount: :asc)
             when "asc"
-              projects.order("title-->#{I18n.locale} ASC")
+              projects.order("title->'#{I18n.locale}' ASC")
             when "random"
                 projects.order_randomly(random_seed)
               else
