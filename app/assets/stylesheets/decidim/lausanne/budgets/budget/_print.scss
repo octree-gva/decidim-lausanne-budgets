@@ -50,6 +50,11 @@ body.lausanne_budget_print {
       width: $size;
     }
   }
+  @media (min-width:1025px) { 
+    .social-share-button .ssb-icon.ssb-whatsapp_app, .shares .social-share-button .ssb-icon.ssb-whatsapp_app{
+      display:none !important;
+    }
+  }
   .actions {
     margin-top: 64px;
     display: flex;
