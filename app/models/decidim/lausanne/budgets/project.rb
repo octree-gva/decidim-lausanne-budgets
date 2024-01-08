@@ -21,7 +21,7 @@ module Decidim
         include Decidim::TranslatableResource
 
         self.table_name = :loz_budgets_projects
-        translatable_fields :title, :description
+        translatable_fields :title, :description, :excerpt
         belongs_to :budget, foreign_key: "loz_budgets_budget_id", class_name: "Decidim::Lausanne::Budgets::LausanneBudget", inverse_of: :projects
         has_one :component, through: :budget, foreign_key: "decidim_component_id", class_name: "Decidim::Component"
         has_many :line_items, class_name: "Decidim::Lausanne::Budgets::LineItem", foreign_key: "decidim_project_id", dependent: :destroy

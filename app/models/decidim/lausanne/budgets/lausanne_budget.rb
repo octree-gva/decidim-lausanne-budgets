@@ -23,7 +23,7 @@ module Decidim
         searchable_fields({
                             participatory_space: { component: :participatory_space },
                             A: :title,
-                            D: [:description, :excerpt, :total_budget]
+                            D: [:description, :total_budget]
                           },
                           index_on_create: ->(budget) { budget.visible? },
                           index_on_update: ->(budget) { budget.visible? })

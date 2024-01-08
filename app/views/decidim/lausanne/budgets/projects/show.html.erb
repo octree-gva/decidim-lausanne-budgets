@@ -1,6 +1,4 @@
 <%= render partial: "decidim/lausanne/budgets/projects/votation_banner" %>
-<%= javascript_include_tag "decidim/social_share" %>
-
 <% add_decidim_meta_tags(
   title: translated_attribute(project.title),
   description: translated_attribute(project.description)
@@ -15,7 +13,8 @@ edit_link(
 )
 %>
 
-<%= cell("decidim/lausanne/budgets/limit_announcement", budget) %>
+<%= render partial: "decidim/budgets/projects/exit_modal", locals: {budget_projects_path: resource_locator([project.budget, project]).index } %>
+<%= cell("decidim/budgets/limit_announcement", budget) %>
 
 <div class="row column view-header">
   <% unless voting_finished? %>
@@ -23,10 +22,11 @@ edit_link(
   <% end %>
 
   <div class="m-bottom">
-    <%= link_to resource_locator(budget).path(filter_link_params), class: "muted-link" do %>
+    <%= link_to resource_locator(budget).index, class: "muted-link js-back-to-list" do %>
       <%= icon "chevron-left", class: "icon--small", role: "img", "aria-hidden": true %>
       <%= t(".view_all_projects") %>
     <% end %>
+
   </div>
   <h2 class="heading2"><%= translated_attribute project.title %></h2>
 </div>
@@ -78,4 +78,4 @@ edit_link(
 <%= render partial: "decidim/lausanne/budgets/projects/user_record_form" %>
 
 <%= attachments_for project %>
-<%= javascript_include_tag("decidim/lausanne/budgets/projects") %>
+<%= javascript_pack_tag "decidim_lausanne_budgets" %>
